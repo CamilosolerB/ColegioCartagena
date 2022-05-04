@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+nav{
+    background-color: #BEA606;
+    display: flex;
+    justify-content: space-evenly;
+}
+nav img{
+    height: 100px;
+}
+nav ul{
+    list-style: none;
+}
+nav ul li {
+    display: inline-block;
+}
+nav ul li a{
+    display: block;
+    padding: 15%;
+}
+.container{
+    display: flex;
+}
+.title{
+    text-align: center;
+    color: #fff;
+}
+.aside{
+    width: 30vw;
+    display: block;
+}
+.section{
+    width: 60vw;
+    display: block;
+}
+footer{
+    background-color: #000;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    clear: both;
+}
+.pie{
+    width: 15%;
+    position: relative;
+    align-items: center;
+    left: 30%;
+
+}
+.pie input{
+    padding: 15px;
+    color: #fff;
+    background-color: #000;
+    margin: 0;
+    width: 400px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom-color: #fff;
+    text-align: center;
+}
+.btnform{
+    border-color: #fff;
+    background-color: #fff;
+    color: #000;
+}
+.general{
+    width: 25%;
+    position: relative;
+    left: 12%;
+}
+.login{
+    background-color: #000;
+    margin: 4%;
+    border-radius: 10px;
+    height: 75%;
+}
+.login h1{
+    padding-top: 3%;
+    font-family: 'Merriweather', serif;
+    font-size: 1.5rem;
+}
+#image{
+    height: 120%;
+}
+@media (max-width: 767px){
+    footer{
+        text-align: center;
+        display: block;
+        flex-wrap: nowrap;
+    }
+    .general{
+        width: 100%;
+        position: static;
+    }
+    .pie{
+        width: 100%;
+        position: static; 
+    }
+    .pie input{
+        width: 80%;
+    }
+    .container{
+        display: contents;
+    }
+    .aside{
+        width: 80vw;
+    }
+    .col.m-4{
+        width: 80vw;
+        height: 40vh;
+    }
+}
