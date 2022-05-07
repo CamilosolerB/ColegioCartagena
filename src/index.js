@@ -2,10 +2,18 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const path = require('path');
-const ejs = require('ejs')
+const ejs = require('ejs');
+const session = require('express-session');
 
+
+app.use(session({
+    resave:true,
+    secret:'1234',
+    saveUninitialized:true
+}));
 //modo de desarrollo y uso de JSON
 app.use(morgan('dev'));
+app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
 //routers
@@ -17,9 +25,11 @@ app.use('/students',require('./routes/students.routes'))
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname,'public'));
 
+/* Setting up a session. */
 
 //uso de archivos estaticos
 /* Telling the server to use the public folder as the root folder for the server. */
+//app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname,'public')));
 app.use(express.static(path.join(__dirname,"static")));
 
