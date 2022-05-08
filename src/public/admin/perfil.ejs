@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Vista estudiante</title>
+    <title>Vista administrador</title>
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -201,25 +201,20 @@
                                 </form>
                             </div>
                         </li>
-
-
-
                         <div class="topbar-divider d-none d-sm-block"></div>
-
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                                     <%=admin[0].Nombre%>
-                                        <%=admin[0].Apellido%>
                                 </span>
                                 <img class="img-profile rounded-circle" src="<%=usuario[0].foto%>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="/admin/">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
@@ -246,8 +241,17 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-                    <h1>Content</h1>
+                    <form action="" method="post">
+                        <label for="">Numero de identificacion</label>
+                        <input type="text" name="id" id="" class="form-control" value="<%=usuario[0].idusuarios%> " disabled>
+                        <label for="">Nombre completo</label>
+                        <input type="text" name="nombre" value="<%=admin[0].Nombre%>" class="form-control">
+                        <label for="">Correo personal</label>
+                        <input type="email" name="emapersonal" value="<%=admin[0].Correo%>" class="form-control">
+                        <label for="">Correo institucional</label>
+                        <input type="email" name="email" value="<%=usuario[0].Correo%>" class="form-control">
+                    
+                    </form>
                 </div>
                 <!-- End of Main Content -->
 

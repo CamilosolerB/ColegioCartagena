@@ -25,7 +25,7 @@ controller.iniciosesion=(req,res)=>{
                                 }
                                 else{
                                     req.session.nombre = respo[0].Nombre;
-                                    req.session.id = respo[0].id;
+                                    req.session.identificacion = respo[0].id;
                                     res.render('admin/index',{usuario : resbd,admin:respo});
                                 } 
                             });
@@ -38,7 +38,7 @@ controller.iniciosesion=(req,res)=>{
                                 else{
                                     req.session.nombre = respo[0].Nombreprofesor;
                                     req.session.apellido = respo[0].Apellidoprofesor;
-                                    req.session.id = respo[0].Cedulaprofesor;
+                                    req.session.identificacion = respo[0].Cedulaprofesor;
                                     res.render('docente/index',{usuario : resbd,admin:respo});
                                 } 
                             });
