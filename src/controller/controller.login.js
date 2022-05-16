@@ -24,6 +24,9 @@ controller.iniciosesion=(req,res)=>{
                                     res.json({Error : err})
                                 }
                                 else{
+                                    req.session.rol = resbd[0].rol
+                                    req.session.image = resbd[0].foto
+                                    req.session.active = true;
                                     req.session.nombre = respo[0].Nombre;
                                     req.session.identificacion = respo[0].id;
                                     res.render('admin/index',{usuario : resbd,admin:respo});
@@ -36,6 +39,9 @@ controller.iniciosesion=(req,res)=>{
                                     res.json({Error : err})
                                 }
                                 else{
+                                    req.session.rol = resbd[0].rol
+                                    req.session.image = resbd[0].foto
+                                    req.session.active = true;
                                     req.session.nombre = respo[0].Nombreprofesor;
                                     req.session.apellido = respo[0].Apellidoprofesor;
                                     req.session.identificacion = respo[0].Cedulaprofesor;
@@ -49,12 +55,13 @@ controller.iniciosesion=(req,res)=>{
                                     res.json({Error : err})
                                 }
                                 else{
-                                    console.log(respo)
+                                    req.session.rol = resbd[0].rol
+                                    req.session.image = resbd[0].foto
+                                    req.session.active = true;
                                     req.session.nombre = respo[0].Nombre;
                                     req.session.apellido = respo[0].Apellido;
                                     req.session.identificacion = respo[0].Documentoestudiante;
                                     res.render('estudiante/index',{usuario : resbd,admin:respo});
-                                    console.log(req.session);
                                 } 
                             });
                         break;
