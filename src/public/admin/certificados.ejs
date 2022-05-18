@@ -22,6 +22,9 @@
     <!-- fevicon -->
     <link rel="icon" href="../img/logo.png" type="image/gif" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.css">
+  
+    
 </head>
 
 <body id="page-top">
@@ -203,12 +206,30 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-                    <h1>Bienvenido/a <%=admin.Nombre%>
-                    </h1>
-                    <p>En este portal podra gestionar todo el proceso que requiera de la institucion, le agradecemos si
-                        encuentra algun error reportarlo ante la institucion ante el area de tecnologia, espero que su
-                        manejo sea el mejor, como esta institucion</p>
+                    <div class="container">
+                        <table class="table table-striped" id="table_id">
+                            <thead class="thead-dark">
+                                <th>Numero de pago</th>
+                                <th>Medio de pago</th>
+                                <th>Nombre cotizante</th>
+                                <th>Valor de pago</th>
+                                <th>Fecha de pago</th>
+                                <th>Documento estudiante</th>
+                            </thead>
+                            <tbody>
+                                <% pagos.forEach( function (pagos) { %>
+                                <tr>
+                                    <td><%= pagos.pago %> </td>
+                                    <td><%= pagos.mediopago %></td>
+                                    <td><%= pagos.Nombrepagador %></td>
+                                    <td><%= pagos.valorpago %></td>
+                                    <td><%= pagos.fecha %></td>
+                                    <td><%= pagos.docestupag %></td>
+                                </tr>  
+                                <%})%> 
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <!-- End of Main Content -->
 
@@ -254,7 +275,6 @@
         </div>
 
         <!-- Bootstrap core JavaScript-->
-        <script src="../vendor/jquery/jquery.min.js"></script>
         <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
         <!-- Core plugin JavaScript-->
@@ -269,7 +289,15 @@
         <!-- Page level custom scripts -->
         <script src="../js/demo/chart-area-demo.js"></script>
         <script src="../js/demo/chart-pie-demo.js"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.js"></script>
+        <!--DATATABLES-->
+        
+        <script>
+            $(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+        </script>
 </body>
 
 </html>

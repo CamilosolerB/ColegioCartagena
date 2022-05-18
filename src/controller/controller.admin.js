@@ -104,14 +104,22 @@ controller.admins = (req, res) => {
 controller.cursos = (req, res) => {
   /* Checking if the user is logged in and if it is, it is rendering the page. */
   if (req.session.active) {
-    const data = {
-      rol: req.session.rol,
-      foto: req.session.image,
-    };
-    res.render("admin/cursos", {
-      usuario: data,
-      admin: { Nombre: req.session.nombre },
-    });
+    mysql.query("Select * from curso",(err,resbd)=>{
+      if(err){
+        throw err
+      }
+      else{
+        const data = {
+          rol: req.session.rol,
+          foto: req.session.image,
+        };
+        res.render("admin/cursos", {
+          usuario: data,
+          admin: { Nombre: req.session.nombre },
+          curso: resbd
+        });
+      }
+    })
   } else {
     res.render("login", {
       Error: "Usted no tiene las credenciales para acceder a este sitio",
@@ -121,7 +129,7 @@ controller.cursos = (req, res) => {
 controller.certificados = (req, res) => {
   /* Checking if the user is logged in and if it is, it is rendering the page. */
   if (req.session.active) {
-    mysql.query('Select * form pagos',(err,resbd)=>{
+    mysql.query('Select * from pagos',(err,resbd)=>{
       if (err) {
         throw err
       } else {
