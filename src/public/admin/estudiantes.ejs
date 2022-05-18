@@ -203,12 +203,86 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-                    <h1>Bienvenido/a <%=admin.Nombre%>
-                    </h1>
-                    <p>En este portal podra gestionar todo el proceso que requiera de la institucion, le agradecemos si
-                        encuentra algun error reportarlo ante la institucion ante el area de tecnologia, espero que su
-                        manejo sea el mejor, como esta institucion</p>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h1 class="d-flex p-2">Registrar profesor</h1>
+                                    <form action="/profesor/nuevoprofesor" method="post" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <label for="">Numero de identificacion del profesor</label>
+                                            <input type="number" class="form-control" name="cedula"
+                                                placeholder="Numero de identificacion del profesor" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Nombre del profesor</label>
+                                            <input type="text" class="form-control" name="nombre"
+                                                placeholder="Nombre del profesor" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Apellido del profesor</label>
+                                            <input type="text" class="form-control" name="apellido"
+                                                placeholder="Apellido del profesor" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Telefono del profesor</label>
+                                            <input type="number" class="form-control" name="telefono"
+                                                placeholder="Telefono del profesor" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Direccion del profesor</label>
+                                            <input type="text" class="form-control" name="direccion"
+                                                placeholder="Direccion del profesor" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Correo del profesor</label>
+                                            <input type="email" class="form-control" name="correo"
+                                                placeholder="Nombre del profesor" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Contraseña del profesor</label>
+                                            <input type="password" id="password" class="form-control" name="clave"
+                                                placeholder="Nombre del profesor" required>
+                                            <button id="pass" class="btn btn-primary" type="button">ver
+                                                Contraseña</button>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="customFile">Foto del profesor</label>
+                                            <input type="file" class="form-control" id="customFile" name="foto"
+                                                required />
+                                        </div>
+                                        <button class="btn btn-success" type="submit">Crear profesor</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="grilla">
+                                <% response.forEach( function(response){%>
+                                    <div class="col">
+                                        <div class="card" style="width: 18rem;">
+                                            <img src="<%=response.foto%> " class="card-img-top" style="height: 250px;">
+                                            <div class="card-body">
+                                                <h5 class="card-title">
+                                                    <%=response.Nombre%> <%=response.Apellido%> 
+                                                </h5>
+                                                <p class="card-text">
+                                                    <%=response.Correo%>
+                                                </p>
+                                                <p class="card-text">
+                                                    <%=response.Telefono%>
+                                                </p>
+                                                <p class="card-text">
+                                                    <%=response.Direccion%>
+                                                </p>
+                                                <a href="/profesor/admin/<%=response.idusuarios%>" class="btn btn-primary">Ver profesor</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <%})%>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- End of Main Content -->
 

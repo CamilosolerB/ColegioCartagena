@@ -57,14 +57,17 @@ controller.profesores = (req, res) => {
 controller.estudiantes = (req, res) => {
   /* Checking if the user is logged in and if it is, it is rendering the page. */
   if (req.session.active) {
-    const data = {
-      rol: req.session.rol,
-      foto: req.session.image,
-    };
-    res.render("admin/estudiantes", {
-      usuario: data,
-      admin: { Nombre: req.session.nombre },
-    });
+    mysql.query('Select * from estudiante inner join usuario on (Documentoestudiante=idusuarios)',(err,resbd)=>{
+      const data = {
+        rol: req.session.rol,
+        foto: req.session.image,
+      };
+      res.render("admin/estudiantes", {
+        usuario: data,
+        admin: { Nombre: req.session.nombre },
+        response: resbd
+      });
+    })
   } else {
     res.render("login", {
       Error: "Usted no tiene las credenciales para acceder a este sitio",
@@ -75,14 +78,22 @@ controller.estudiantes = (req, res) => {
 controller.admins = (req, res) => {
   /* Checking if the user is logged in and if it is, it is rendering the page. */
   if (req.session.active) {
-    const data = {
-      rol: req.session.rol,
-      foto: req.session.image,
-    };
-    res.render("admin/admins", {
-      usuario: data,
-      admin: { Nombre: req.session.nombre },
-    });
+    mysql.query('Select * from administrador inner join usuario on (id=idusuarios)',(err,resbd)=>{
+      if(err){
+        throw err
+      }
+      else{
+        const data = {
+          rol: req.session.rol,
+          foto: req.session.image,
+        };
+        res.render("admin/admins", {
+          usuario: data,
+          admin: { Nombre: req.session.nombre },
+          response: resbd
+        });
+      }
+    })
   } else {
     res.render("login", {
       Error: "Usted no tiene las credenciales para acceder a este sitio",
@@ -110,14 +121,21 @@ controller.cursos = (req, res) => {
 controller.certificados = (req, res) => {
   /* Checking if the user is logged in and if it is, it is rendering the page. */
   if (req.session.active) {
-    const data = {
-      rol: req.session.rol,
-      foto: req.session.image,
-    };
-    res.render("admin/certificados", {
-      usuario: data,
-      admin: { Nombre: req.session.nombre },
-    });
+    mysql.query('Select * form pagos',(err,resbd)=>{
+      if (err) {
+        throw err
+      } else {
+        const data = {
+          rol: req.session.rol,
+          foto: req.session.image,
+        };
+        res.render("admin/certificados", {
+          usuario: data,
+          admin: { Nombre: req.session.nombre },
+          pagos: resbd
+        });
+      }
+    })
   } else {
     res.render("login", {
       Error: "Usted no tiene las credenciales para acceder a este sitio",

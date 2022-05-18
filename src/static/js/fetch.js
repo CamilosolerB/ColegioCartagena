@@ -1,12 +1,4 @@
-function login() {
-  Swal.fire({
-      //
-    icon: "error",
-    title: "Oops...",
-    text: datos.Error,
-    timer: 2000,
-  });
-}
+
 
 
 function showpassword(){
@@ -22,6 +14,3 @@ function showpassword(){
 var password = document.getElementById('pass');
 password.addEventListener('click',showpassword);
 
-//var datos = document.getElementById("enviar");
-
-//datos.addEventListener("click", login);

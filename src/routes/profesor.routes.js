@@ -63,4 +63,6 @@ router.post("/nuevoprofesor", uploads.single("foto"), (req, res) => {
   }
 });
 router.get('/admin/:id',controller.getprofesor);
+router.put('/inactivar',controller.inactivarprofesor);
+router.put('/activar',controller.activarprofesor);
 module.exports = router;

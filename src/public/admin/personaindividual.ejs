@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Vista administrador</title>
+    <title><%=response[0].Nombreprofesor%> <%=response[0].Apellidoprofesor%></title>
 
     <!-- Custom fonts for this template-->
     <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -203,12 +203,34 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-                    <h1>Bienvenido/a <%=admin.Nombre%>
-                    </h1>
-                    <p>En este portal podra gestionar todo el proceso que requiera de la institucion, le agradecemos si
-                        encuentra algun error reportarlo ante la institucion ante el area de tecnologia, espero que su
-                        manejo sea el mejor, como esta institucion</p>
+                    <div class="row">
+                        <div class="col-4">
+                            <img src="../../<%=response[0].foto%> " width="100%" height="150%" alt="">
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex flex-column bd-highlight mb-3">
+                                <h1><%=response[0].Nombreprofesor%> <%=response[0].Apellidoprofesor%></h1>
+                                <h4>Numero de cedula: <%= response[0].Cedulaprofesor %> </h4>
+                                <h4>Nombre: <%=response[0].Nombreprofesor%></h4>
+                                <h4>Apellido: <%=response[0].Apellidoprofesor%></h4>
+                                <h4>Telefono: <%=response[0].Telefono%></h4>
+                                <h4>Direccion: <%=response[0].Direccion%></h4>
+                            </div>
+                            <div class="d-flex flex-column bd-highlight mb-3">
+                                <h4>Correo: <%=response[0].Correo%></h4>
+                                <% if(response[0].activo==1){ %> 
+                                <h4>Estado: activo</h4>
+                                <% } else{%>
+                                    <h4>Estado: Inactivo</h4>
+                                <% } %>
+                                <% if(response[0].activo==1){ %> 
+                                    <button class="btn btn-danger" value="<%= response[0].idusuarios %>" id="inactivar" onclick="inactivar()">Inactivar profesor</button>
+                                <% } else{%>
+                                    <button class="btn btn-primary" value="<%= response[0].idusuarios %>" id="activar" onclick="activar()">Activar profesor</button>
+                                <% } %>   
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- End of Main Content -->
 
@@ -269,7 +291,8 @@
         <!-- Page level custom scripts -->
         <script src="../../js/demo/chart-area-demo.js"></script>
         <script src="../../js/demo/chart-pie-demo.js"></script>
-
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="../../js/activar.js"></script>
 </body>
 
 </html>

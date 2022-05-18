@@ -21,5 +21,32 @@ controller.getprofesor=(req,res)=>{
     })
     }
 }
+controller.inactivarprofesor=(req,res)=>{
+  if(req.session.active){
+    const {id} = req.body;
+    mysql.query('Update usuario Set activo=0 Where idusuarios=?',[id],(err)=>{
+      if(err){
+        throw err
+      }
+      else{
+        res.json({status: "El Usuario ha sido inactivado correctamente"})
+      }
+    })
+  }
+}
+
+controller.activarprofesor=(req,res)=>{
+  if(req.session.active){
+    const {id} = req.body;
+    mysql.query('Update usuario Set activo=1 Where idusuarios=?',[id],(err)=>{
+      if(err){
+        throw err
+      }
+      else{
+        res.json({status: "El Usuario ha sido activado correctamente"})
+      }
+    })
+  }
+}
 
 module.exports = controller;
