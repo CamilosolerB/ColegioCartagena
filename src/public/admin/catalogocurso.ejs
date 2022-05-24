@@ -211,116 +211,16 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="card">
+                        <% curso.forEach(function (curso){%>
+                            <div class="card m-2" style="width: 18rem;">
                                 <div class="card-body">
-                                    <h1 class="d-flex p-2">Registrar estudiante</h1>
-                                    <form action="/students/nuevoestudiante" method="post" enctype="multipart/form-data">
-                                        <div class="form-group">
-                                            <label for="">Numero de identificacion del estudiante</label>
-                                            <input type="number" class="form-control" name="cedula"
-                                                placeholder="Numero de identificacion del estudiante" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">Nombre del estudiante</label>
-                                            <input type="text" class="form-control" name="nombre"
-                                                placeholder="Nombre del profesor" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">Apellido del estudiante</label>
-                                            <input type="text" class="form-control" name="apellido"
-                                                placeholder="Apellido del profesor" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">Edad del estudiante</label>
-                                            <input type="text" class="form-control" name="edad"
-                                                placeholder="Apellido del profesor" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">Telefono del estudiante</label>
-                                            <input type="number" class="form-control" name="telefono"
-                                                placeholder="Telefono del profesor" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">Direccion del estudiante</label>
-                                            <input type="text" class="form-control" name="direccion"
-                                                placeholder="Direccion del profesor" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">Tipo de sangre</label>
-                                            <select name="tiposangre" id="" class="form-control">
-                                                <option value="A+">A+</option>
-                                                <option value="A-">A-</option>
-                                                <option value="B+">B+</option>
-                                                <option value="B-">B-</option>
-                                                <option value="O+">O+</option>
-                                                <option value="O-">O-</option>
-                                                <option value="AB+">AB+</option>
-                                                <option value="AB-">AB-</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">Fecha de nacimiento</label>
-                                            <input type="date" class="form-control" name="fecnac"
-                                                placeholder="Direccion del profesor" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">Correo del estudiante</label>
-                                            <input type="email" class="form-control" name="correo"
-                                                placeholder="Nombre del profesor" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">Contraseña del estudiante</label>
-                                            <input type="password" id="password" class="form-control" name="clave"
-                                                placeholder="Nombre del profesor" required>
-                                            <button id="pass" class="btn btn-primary" type="button">ver
-                                                Contraseña</button>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-label" for="customFile">Foto del estudiante</label>
-                                            <input type="file" class="form-control" id="customFile" name="foto"
-                                                required />
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">Curso a inscribir</label>
-                                            <select name="curso" id="" class="form-control">
-                                                <option value="" disabled>Seleccione el curso</option>
-                                                <% curso.forEach(function(curso){%>
-                                                    <option value="<%= curso.Codigocurso %> "><%= curso.Codigocurso %> </option>
-                                                <%}) %>  
-                                            </select>
-                                        </div>
-                                        <button class="btn btn-success" type="submit">Crear estudiante</button>
-                                    </form>
+                                  <h5 class="card-title">Curso <%=curso.Codigocurso %> </h5>
+                                  <h6 class="card-subtitle mb-2 text-muted">Grado <%=curso.idgrado%></h6>
+                                  <p class="card-text">Numero de estudiantes: <%=curso.nodeestudiantes %></p>
+                                  <a href="/cursos/<%=curso.Codigocurso %>" class="btn btn-primary">Ver materias y profesores</a>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="grilla">
-                                <% response.forEach( function(response){%>
-                                    <div class="col">
-                                        <div class="card" style="width: 18rem;">
-                                            <img src="<%=response.foto%> " class="card-img-top" style="height: 250px;">
-                                            <div class="card-body">
-                                                <h5 class="card-title">
-                                                    <%=response.Nombre%> <%=response.Apellido%> 
-                                                </h5>
-                                                <p class="card-text">
-                                                    <%=response.Correo%>
-                                                </p>
-                                                <p class="card-text">
-                                                    <%=response.Telefono%>
-                                                </p>
-                                                <p class="card-text">
-                                                    <%=response.Direccion%>
-                                                </p>
-                                                <a href="/students/admin/<%=response.idusuarios%>" class="btn btn-primary">Ver estudiante</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <%})%>
-                            </div>
-                        </div>
+                              </div>
+                            <% }) %>  
                     </div>
                 </div>
                 <!-- End of Main Content -->
@@ -382,7 +282,7 @@
         <!-- Page level custom scripts -->
         <script src="../js/demo/chart-area-demo.js"></script>
         <script src="../js/demo/chart-pie-demo.js"></script>
-        <script src="../js/fetch.js"></script>
+
 </body>
 
 </html>

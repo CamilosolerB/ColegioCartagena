@@ -108,6 +108,12 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/admin/catalogo">
+                    <i class="fa-solid fa-user-plus"></i>
+                    <span>Asociar profesor</span>
+                </a>
+            </li>
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -207,24 +213,27 @@
                         <div class="col-md-4">
                             <div class="card">
                                 <div class="card-body">
-                                    <h1 class="d-flex p-2">Registrar profesor</h1>
-                                    <form action="" method="post" enctype="multipart/form-data">
-                                        <label for="">Numero de identificacion</label>
-                                        <input type="text" name="id" id="" class="form-control" value="" disabled>
-                                        <label for="">Nombre completo</label>
-                                        <input type="text" name="nombre" value="" class="form-control">
-                                        <label for="">Correo personal</label>
-                                        <input type="email" name="emapersonal" value="" class="form-control">
-                                        <label for="">Correo institucional</label>
-                                        <input type="email" name="email" value="" class="form-control">
-                                        <label for="">Contraseña</label>
-                                        <input type="text" name="password" value="" class="form-control">
-                                        <label for="">Foto</label>
-                                        <div class="custom-input-file col-md-6 col-sm-6 col-xs-6">
-                                            <input type="file" id="fichero-tarifas" class="input-file" value="" name="foto">
-                                            Cambiar foto
-                                        </div>
-                                        <button type="submit" class="btn btn-success p-4 m-4">Actulizar informacion</button>
+                                    <h1 class="d-flex p-2">Crear curso</h1>
+                                    <form action="/cursos/crearcurso" method="post">
+                                        <label for="">Numero del curso</label>
+                                        <input type="number" name="codigo" id="" class="form-control" value="">
+                                        <label for="">Nuermo de estudiantes en el curso</label>
+                                        <input type="number" name="numeroest" value="" class="form-control">
+                                        <label for="">Grado</label>
+                                        <select name="grado" id="" class="form-control">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                        </select>
+                                        <button type="submit" class="btn btn-success p-4 m-4">Crear curso</button>
                                     </form>
                                 </div>
                             </div>
@@ -235,12 +244,14 @@
                                     <thead class="thead-dark">
                                         <th>Codigo del curso</th>
                                         <th>Numero de estudiantes</th>
+                                        <th>Grado</th>
                                     </thead>
                                     <tbody>
                                         <% curso.forEach( function (curso) { %>
                                         <tr>
                                             <td><%= curso.Codigocurso %> </td>
                                             <td><%= curso.nodeestudiantes %></td>
+                                            <td><%= curso.idgrado %></td>
                                         </tr>  
                                         <%})%> 
                                     </tbody>

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><%=response[0].Nombreprofesor%> <%=response[0].Apellidoprofesor%></title>
+    <title>Informacion de la persona</title>
 
     <!-- Custom fonts for this template-->
     <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -108,6 +108,12 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/admin/catalogo">
+                    <i class="fa-solid fa-user-plus"></i>
+                    <span>Asociar profesor</span>
+                </a>
+            </li>
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -208,6 +214,7 @@
                             <img src="../../<%=response[0].foto%> " width="100%" height="150%" alt="">
                         </div>
                         <div class="col-6">
+                            <% if(response[0].rol=="profesor"){ %> 
                             <div class="d-flex flex-column bd-highlight mb-3">
                                 <h1><%=response[0].Nombreprofesor%> <%=response[0].Apellidoprofesor%></h1>
                                 <h4>Numero de cedula: <%= response[0].Cedulaprofesor %> </h4>
@@ -227,7 +234,52 @@
                                     <button class="btn btn-danger" value="<%= response[0].idusuarios %>" id="inactivar" onclick="inactivar()">Inactivar profesor</button>
                                 <% } else{%>
                                     <button class="btn btn-primary" value="<%= response[0].idusuarios %>" id="activar" onclick="activar()">Activar profesor</button>
-                                <% } %>   
+                                <% } %>
+                            <% } %>
+                            <% if(response[0].rol=="estudiante"){ %> 
+                                <div class="d-flex flex-column bd-highlight mb-3">
+                                    <h1><%=response[0].Nombre%> <%=response[0].Apellido%></h1>
+                                    <h4>Numero de identificacion: <%= response[0].Documentoestudiante %> </h4>
+                                    <h4>Nombre: <%=response[0].Nombre%></h4>
+                                    <h4>Apellido: <%=response[0].Apellido%></h4>
+                                    <h4>Telefono: <%=response[0].Telefono%></h4>
+                                    <h4>Direccion: <%=response[0].Direccion%></h4>
+                                    <h4>RH: <%=response[0].TipoDeSangre%></h4>
+                                    <h4>Fecha de nacimiento: <%=response[0].Fechanacimiento%></h4>
+                                </div>
+                                <div class="d-flex flex-column bd-highlight mb-3">
+                                    <h4>Correo: <%=response[0].Correo%></h4>
+                                    <% if(response[0].activo==1){ %> 
+                                    <h4>Estado: activo</h4>
+                                    <% } else{%>
+                                        <h4>Estado: Inactivo</h4>
+                                    <% } %>
+                                    <% if(response[0].activo==1){ %> 
+                                        <button class="btn btn-danger" value="<%= response[0].idusuarios %>" id="inactivar" onclick="inactivar()">Inactivar estudiante</button>
+                                    <% } else{%>
+                                        <button class="btn btn-primary" value="<%= response[0].idusuarios %>" id="activar" onclick="activar()">Activar estudiante</button>
+                                    <% } %>
+                                <% } %>
+                                <% if(response[0].rol=="administrador"){ %> 
+                                    <div class="d-flex flex-column bd-highlight mb-3">
+                                        <h1><%=response[0].Nombre%></h1>
+                                        <h4>Numero de identificacion: <%= response[0].id %> </h4>
+                                        <h4>Nombre: <%=response[0].Nombre%></h4>
+                                        <h4>Correo administrativo: <%=response[0].Correoadmin%></h4>
+                                    </div>
+                                    <div class="d-flex flex-column bd-highlight mb-3">
+                                        <h4>Correo administrativo: <%=response[0].Correo%></h4>
+                                        <% if(response[0].activo==1){ %> 
+                                        <h4>Estado: activo</h4>
+                                        <% } else{%>
+                                            <h4>Estado: Inactivo</h4>
+                                        <% } %>
+                                        <% if(response[0].activo==1){ %> 
+                                            <button class="btn btn-danger" value="<%= response[0].idusuarios %>" id="inactivar" onclick="inactivar()">Inactivar administrador</button>
+                                        <% } else{%>
+                                            <button class="btn btn-primary" value="<%= response[0].idusuarios %>" id="activar" onclick="activar()">Activar administrador</button>
+                                        <% } %>
+                                    <% } %>       
                             </div>
                         </div>
                     </div>

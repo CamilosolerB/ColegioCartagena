@@ -23,7 +23,7 @@ router.get('/',controller.veradministrador);
 router.post('/',uploads.single('foto'), function (req,res){
     if(req.session.active){
     const {nombre, emapersonal} = req.body;
-    mysql.query('Update administrador SET Nombre="'+nombre+'", Correo="'+emapersonal+'" WHERE id="'+req.session.identificacion+'"',(err)=>{
+    mysql.query('Update administrador SET Nombre="'+nombre+'", Correoadmin="'+emapersonal+'" WHERE id="'+req.session.identificacion+'"',(err)=>{
         if(err){
             throw err
         }
@@ -67,12 +67,50 @@ else {
     });
   }
 });
+router.post("/nuevoadmin", uploads.single("foto"), (req, res) => {
+    if (req.session.active) {
+      const { id, email, password } = req.body;
+      const data = {
+        idusuarios: id,
+        Correo: email,
+        Clave: password,
+        activo: 1,
+        rol: "administrador",
+        foto: "../fotosa/" + req.file.filename,
+      };
+      mysql.query("Insert into usuario set?", [data], (err) => {
+        if (err) {
+          throw err;
+        } else {
+          const { nombre, emapersonal } = req.body;
+          const usuario = {
+            id: id,
+            Nombre: nombre,
+            Correoadmin: emapersonal 
+          };
+          mysql.query("Insert into administrador set?", [usuario], (err) => {
+            if (err) {
+              throw err;
+            } else {
+              res.redirect("/admin/administradores");
+            }
+          });
+        }
+      });
+    } else {
+      res.render("login", {
+        Error: "Usted no tiene las credenciales para acceder a este sitio",
+      });
+    }
+  });
 router.get('/profesores',controller.profesores);
 router.get('/estudiantes',controller.estudiantes);
 router.get('/administradores',controller.admins);
 router.get('/cursos',controller.cursos);
 router.get('/certificados',controller.certificados);
+router.get('/admin/:id',controller.getadministrador);
+router.get('/catalogo',controller.vistacatalogo);
 //ver profesores en especifico
-//router.get('/profesor/:id',profesor.getprofesor);
+//router.get('/profesor/:id',profesor.getprofesr);
 
 module.exports = router;

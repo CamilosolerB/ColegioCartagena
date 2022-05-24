@@ -58,15 +58,23 @@ controller.estudiantes = (req, res) => {
   /* Checking if the user is logged in and if it is, it is rendering the page. */
   if (req.session.active) {
     mysql.query('Select * from estudiante inner join usuario on (Documentoestudiante=idusuarios)',(err,resbd)=>{
-      const data = {
-        rol: req.session.rol,
-        foto: req.session.image,
-      };
-      res.render("admin/estudiantes", {
-        usuario: data,
-        admin: { Nombre: req.session.nombre },
-        response: resbd
-      });
+      mysql.query('Select * from curso',(err,sendm)=>{
+        if(err){
+          res.send(err)
+        }
+        else{
+          const data = {
+            rol: req.session.rol,
+            foto: req.session.image,
+          };
+          res.render("admin/estudiantes", {
+            usuario: data,
+            admin: { Nombre: req.session.nombre },
+            response: resbd,
+            curso: sendm
+          });
+        }
+      })
     })
   } else {
     res.render("login", {
@@ -104,7 +112,7 @@ controller.admins = (req, res) => {
 controller.cursos = (req, res) => {
   /* Checking if the user is logged in and if it is, it is rendering the page. */
   if (req.session.active) {
-    mysql.query("Select * from curso",(err,resbd)=>{
+    mysql.query('Select * from curso inner join gradoscursos on (Codigocurso=idcurso)',(err,resbd)=>{
       if(err){
         throw err
       }
@@ -150,5 +158,49 @@ controller.certificados = (req, res) => {
     });
   }
 };
-
+controller.getadministrador=(req,res)=>{
+  if(req.session.active){
+  const {id} = req.params;
+  mysql.query('Select * from administrador inner join usuario on (id=idusuarios) Where id=?',[id],(err,resbd)=>{
+      if (err) {
+          throw err;
+        } else {
+          const data = {
+            rol: req.session.rol,
+            foto: req.session.image,
+          };
+          res.render("admin/personaindividual", {
+            usuario: data,
+            admin: { Nombre: req.session.nombre },
+            response: resbd
+          });
+        }
+  })
+  }
+}
+controller.vistacatalogo = (req, res) => {
+  /* Checking if the user is logged in and if it is, it is rendering the page. */
+  if (req.session.active) {
+    mysql.query('Select * from curso inner join gradoscursos on (Codigocurso=idcurso)',(err,resbd)=>{
+      if(err){
+        throw err
+      }
+      else{
+        const data = {
+          rol: req.session.rol,
+          foto: req.session.image,
+        };
+        res.render("admin/catalogocurso", {
+          usuario: data,
+          admin: { Nombre: req.session.nombre },
+          curso: resbd
+        });
+      }
+    })
+  } else {
+    res.render("login", {
+      Error: "Usted no tiene las credenciales para acceder a este sitio",
+    });
+  }
+};
 module.exports = controller;

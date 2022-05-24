@@ -19,6 +19,7 @@
 
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/grillla.css">
     <!-- fevicon -->
     <link rel="icon" href="../img/logo.png" type="image/gif" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -108,6 +109,12 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/admin/catalogo">
+                    <i class="fa-solid fa-user-plus"></i>
+                    <span>Asociar profesor</span>
+                </a>
+            </li>
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -208,9 +215,9 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h1 class="d-flex p-2">Registrar Administrador</h1>
-                                    <form action="" method="post" enctype="multipart/form-data">
+                                    <form action="/admin//nuevoadmin" method="post" enctype="multipart/form-data">
                                         <label for="">Numero de identificacion</label>
-                                        <input type="text" name="id" id="" class="form-control" value="" disabled>
+                                        <input type="number" name="id" id="" class="form-control">
                                         <label for="">Nombre completo</label>
                                         <input type="text" name="nombre" value="" class="form-control">
                                         <label for="">Correo personal</label>
@@ -218,13 +225,14 @@
                                         <label for="">Correo institucional</label>
                                         <input type="email" name="email" value="" class="form-control">
                                         <label for="">Contraseña</label>
-                                        <input type="text" name="password" value="" class="form-control">
-                                        <label for="">Foto</label>
-                                        <div class="custom-input-file col-md-6 col-sm-6 col-xs-6">
-                                            <input type="file" id="fichero-tarifas" class="input-file" value="" name="foto">
-                                            Cambiar foto
+                                        <div class="form-group">
+                                            <input type="password" id="password" name="password" value="" class="form-control">
+                                        <button id="pass" class="btn btn-primary" type="button">ver
+                                            Contraseña</button>
                                         </div>
-                                        <button type="submit" class="btn btn-success p-4 m-4">Actulizar informacion</button>
+                                        <label for="">Foto</label>
+                                        <input type="file" id="fichero-tarifas" class="input-file" value="" name="foto">
+                                        <button type="submit" class="btn btn-success">Crear administrador</button>
                                     </form>
                                 </div>
                             </div>
@@ -242,7 +250,7 @@
                                                 <p class="card-text">
                                                     <%=response.Correo%>
                                                 </p>
-                                                <a href="/profesor/admin/<%=response.idusuarios%>" class="btn btn-primary">Ver profesor</a>
+                                                <a href="/admin/admin/<%=response.idusuarios%>" class="btn btn-primary">Ver profesor</a>
                                             </div>
                                         </div>
                                     </div>
@@ -310,6 +318,7 @@
         <!-- Page level custom scripts -->
         <script src="../js/demo/chart-area-demo.js"></script>
         <script src="../js/demo/chart-pie-demo.js"></script>
+        <script src="../js/fetch.js"></script>
 
 </body>
 

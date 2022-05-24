@@ -65,6 +65,21 @@ function inactivar() {
       }
     })
   }
+
+  function agregarprofesor(){
+    fetch('/profesor/verprofesor')
+    .then(response => response.json())
+    .then(data => Swal.fire({
+      title: 'Selecciona el profesor y la materia',
+      input: 'select',
+      inputOptions: 
+        data.datas.Nombreprofesor
+      ,
+      inputPlaceholder: 'Nombre del profesor',
+      showCancelButton: true,
+    })
+    )
+  }
     
 
 

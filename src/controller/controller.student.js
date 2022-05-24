@@ -1,4 +1,5 @@
 const controller = {}
+const mysql = require('../database');
 
 controller.verestudiantes=(req,res)=>{
     res.send('consulta a estudiantes')
@@ -6,7 +7,7 @@ controller.verestudiantes=(req,res)=>{
 controller.getestudiantes=(req,res)=>{
     if(req.session.active){
     const {id} = req.params;
-    mysql.query('Select * from docente inner join usuario on (Codigoprofesor=idusuarios) Where Codigoprofesor=?',[id],(err,resbd)=>{
+    mysql.query('Select * from estudiante inner join usuario on (Documentoestudiante=idusuarios) Where Documentoestudiante=?',[id],(err,resbd)=>{
         if (err) {
             throw err;
           } else {
@@ -22,33 +23,6 @@ controller.getestudiantes=(req,res)=>{
           }
     })
     }
-}
-controller.inactivarestudiantes=(req,res)=>{
-  if(req.session.active){
-    const {id} = req.body;
-    mysql.query('Update usuario Set activo=0 Where idusuarios=?',[id],(err)=>{
-      if(err){
-        throw err
-      }
-      else{
-        res.json({status: "El Usuario ha sido inactivado correctamente"})
-      }
-    })
-  }
-}
-
-controller.activarestudiantes=(req,res)=>{
-  if(req.session.active){
-    const {id} = req.body;
-    mysql.query('Update usuario Set activo=1 Where idusuarios=?',[id],(err)=>{
-      if(err){
-        throw err
-      }
-      else{
-        res.json({status: "El Usuario ha sido activado correctamente"})
-      }
-    })
-  }
 }
 
 module.exports = controller;

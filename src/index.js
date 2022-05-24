@@ -21,6 +21,7 @@ app.use(require('./routes/desing.routes'))
 app.use('/students',require('./routes/students.routes'));
 app.use('/admin',require('./routes/admin.routes'));
 app.use('/profesor',require('./routes/profesor.routes'));
+app.use('/cursos',require('./routes/cursos.routes'));
 
 //uso de motores de platillas (en este caso se usa ejs)
 /* Telling the server to use the ejs engine to render the views. */

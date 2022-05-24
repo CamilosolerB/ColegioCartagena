@@ -49,4 +49,26 @@ controller.activarprofesor=(req,res)=>{
   }
 }
 
+controller.mostrarprofesores=(req,res)=>{
+  if(req.session.active){
+    mysql.query('Select * from docente',(err,resbd)=>{
+      if (err) {
+        throw err
+      } else {
+        mysql.query('Select * from materias',(err,resp)=>{
+          if(err){
+            throw err;
+          }
+          else{
+            res.json({
+              datas: resbd,
+              materias: resp
+            });
+          }
+        })
+      }
+    })
+  }
+}
+
 module.exports = controller;

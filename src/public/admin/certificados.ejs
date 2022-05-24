@@ -111,6 +111,12 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/admin/catalogo">
+                    <i class="fa-solid fa-user-plus"></i>
+                    <span>Asociar profesor</span>
+                </a>
+            </li>
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -219,7 +225,7 @@
                             <tbody>
                                 <% pagos.forEach( function (pagos) { %>
                                 <tr>
-                                    <td><%= pagos.pago %> </td>
+                                    <td><%= pagos.Nopago %> </td>
                                     <td><%= pagos.mediopago %></td>
                                     <td><%= pagos.Nombrepagador %></td>
                                     <td><%= pagos.valorpago %></td>
