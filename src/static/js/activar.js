@@ -69,15 +69,27 @@ function inactivar() {
   function agregarprofesor(){
     fetch('/profesor/verprofesor')
     .then(response => response.json())
-    .then(data => Swal.fire({
-      title: 'Selecciona el profesor y la materia',
-      input: 'select',
-      inputOptions: 
-        data.datas.Nombreprofesor
-      ,
-      inputPlaceholder: 'Nombre del profesor',
-      showCancelButton: true,
-    })
+    .then(function(data){
+      let profesor = [];
+      Object.keys(data).forEach(key =>{
+        if(key=='datas'){
+          profesor.push({profe: data[key]})
+        }
+      })
+        var list = profesor.map(function(data){
+          let valores = data.Nombreprofesor+" "+data.Apellidoprofesor;
+          return valores;
+        })
+      console.log(profesor)
+      Swal.fire({
+        title: 'Selecciona el profesor y la materia',
+        input: 'select',
+        inputOptions: ""
+        ,
+        inputPlaceholder: 'Nombre del profesor',
+        showCancelButton: true,
+      })
+    }
     )
   }
     
