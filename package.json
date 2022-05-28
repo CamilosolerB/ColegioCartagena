@@ -19,7 +19,8 @@
     "mysql": "^2.18.1",
     "nequi": "^1.2.3",
     "nodemailer": "^6.7.5",
-    "sweetalert2": "^11.4.10"
+    "sweetalert2": "^11.4.10",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.16"
