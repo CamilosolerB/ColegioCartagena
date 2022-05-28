@@ -67,31 +67,36 @@ function inactivar() {
   }
 
   function agregarprofesor(){
-    fetch('/profesor/verprofesor')
+    const nombre = document.getElementById('nombre').value
+    const materia = document.getElementById('materia').value
+    const curso = document.getElementById('curso').value
+    const data = {
+      nombre:nombre,materia:materia,curso:curso
+    }
+    fetch('/profesor/insertarmateriaprofesor',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
     .then(response => response.json())
     .then(function(data){
-      let profesor = [];
-      Object.keys(data).forEach(key =>{
-        if(key=='datas'){
-          profesor.push({profe: data[key]})
-        }
-      })
-        var list = profesor.map(function(data){
-          let valores = data.Nombreprofesor+" "+data.Apellidoprofesor;
-          return valores;
-        })
-      console.log(profesor)
+      console.log(data)
       Swal.fire({
-        title: 'Selecciona el profesor y la materia',
-        input: 'select',
-        inputOptions: ""
-        ,
-        inputPlaceholder: 'Nombre del profesor',
-        showCancelButton: true,
-      })
+        icon: 'success',
+        title: data['message'],
+        showConfirmButton: false,
+        timer: 1000
+      });
+      window.location.reload()
     }
     )
   }
+
+let agregar = document.getElementById('verprofesores');
+
+agregar.addEventListener('click',agregarprofesor);
     
 
 

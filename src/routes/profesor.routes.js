@@ -66,4 +66,5 @@ router.get('/admin/:id',controller.getprofesor);
 router.get('/verprofesor',controller.mostrarprofesores);
 router.put('/inactivar',controller.inactivarprofesor);
 router.put('/activar',controller.activarprofesor);
+router.post('/insertarmateriaprofesor',controller.asignarcurso);
 module.exports = router;

@@ -218,13 +218,28 @@
                                     <% profesor.forEach( function(profesor){%>
                                         <div class="d-flex justify-content-between">
                                             <p><%=profesor.Nombremateria%>: <%=profesor.Nombreprofesor%> <%=profesor.Apellidoprofesor%></p>
-                                        <button class="btn btn-primary">Cambiar profesor</button>
                                         </div>
                                     <% }) %>
-                                    <div id="tbody">
-
-                                    </div>
-                                    <button class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Agregar profesor a este curso" onclick="agregarprofesor()"><i class="fa-solid fa-address-card"></i></button> 
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                        <form>
+                                            <label>Nombre del profesor</label>
+                                            <select name='nombre' id="nombre" class="form-control">
+                                            <% datas.forEach(function(data){%>
+                                                <option value="<%=data.Codigoprofesor%>"><%=data.Nombreprofesor%> <%=data.Apellidoprofesor%></option>
+                                            <% }) %>  
+                                            </select>
+                                            <label>Materia a asignar</label>
+                                            <select name='materia' id="materia" class="form-control">
+                                                <% materias.forEach(function(data){%>
+                                                    <option value="<%=data.Idmateria%>"><%=data.Nombremateria%></option>
+                                                <% }) %>  
+                                                </select>
+                                            <input type="hidden" name="curso" id="curso" value="<%=curso[0].idcurso %> ">
+                                            <button class="btn btn-success" id="verprofesores" data-bs-toggle="tooltip" data-bs-placement="top" title="Agregar profesor a este curso" type="button">asignar profesor   <i class="fa-solid fa-address-card"></i></button>  
+                                        </form>  
                                 </div>
                             </div>
                         </div>

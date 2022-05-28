@@ -71,4 +71,32 @@ controller.mostrarprofesores=(req,res)=>{
   }
 }
 
+controller.asignarcurso=(req,res)=>{
+  console.log(req.body);
+  const {nombre, materia, curso} = req.body;
+  const cursodocente = {
+    idcursdoc: curso,
+    iddocente: nombre
+  }
+  mysql.query('Insert into cursodocente set?',[cursodocente],(err)=>{
+    if (err) {
+      throw err
+    } else {
+      const materias = {
+        idprofmat: nombre,
+        idmatprof: materia,
+        idcursmat: curso
+      }
+      mysql.query('Insert into `materias-profesor` set?',[materias],(error)=>{
+        if(error){
+          throw error
+        }
+        else{
+          res.json({message: "insertado correctamente"})
+        }
+      })
+    }
+  })
+}
+
 module.exports = controller;
