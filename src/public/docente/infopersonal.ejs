@@ -33,11 +33,11 @@
         <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/profesor/misdatos">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">!Bienvenido! <%=usuario[0].rol%>
+                <div class="sidebar-brand-text mx-3">!Bienvenido! <%=usuario.rol%>
                 </div>
             </a>
 
@@ -46,7 +46,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="/profesor/misdatos">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -61,25 +61,20 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="/profesor/cursos">
                     <i class="fa-solid fa-book text-gray-400"></i>
                     <span>Cursos</span></a>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="/profesor/excusas">
                     <i class="fa-solid fa-hospital text-gray-400"></i>
                     <span>Mis excusas</span></a>
             </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Mi perfil</span></a>
-            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -153,15 +148,15 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                                    <%=admin[0].Nombreprofesor%>
-                                        <%=admin[0].Apellidoprofesor%>
+                                    <%=admin.Nombre%>
+                                        <%=admin.Apellido%>
                                 </span>
-                                <img class="img-profile rounded-circle" src="<%=usuario[0].foto%>">
+                                <img class="img-profile rounded-circle" src="<%=usuario.foto%>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="/profesor/misdatos">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
@@ -180,58 +175,56 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <div class="col-md-4">
                         <div class="card">
                             <div class="card-body">
                                 <h1 class="d-flex p-2">Mis datos</h1>
-                                <form action="/profesor/nuevoprofesor" method="post" enctype="multipart/form-data">
+                                <form action="/profesor/cambiardatos" method="post" enctype="multipart/form-data">
                                     <div class="form-group">
-                                        <label for="">Numero de identificacion del profesor</label>
+                                        <label for="">Numero de identificacion</label>
                                         <input type="number" class="form-control" name="cedula"
-                                            placeholder="Numero de identificacion del profesor" required>
+                                            placeholder="Numero de identificacion del profesor" value="<%= response[0].Codigoprofesor %>" disabled>
                                     </div>
                                     <div class="form-group">
-                                        <label for="">Nombre del profesor</label>
-                                        <input type="text" class="form-control" name="nombre"
+                                        <label for="">Nombre</label>
+                                        <input type="text" class="form-control" name="nombre" value="<%= response[0].Nombreprofesor %>"
                                             placeholder="Nombre del profesor" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="">Apellido del profesor</label>
-                                        <input type="text" class="form-control" name="apellido"
+                                        <label for="">Apellido</label>
+                                        <input type="text" class="form-control" name="apellido" value="<%= response[0].Apellidoprofesor %>"
                                             placeholder="Apellido del profesor" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="">Telefono del profesor</label>
-                                        <input type="number" class="form-control" name="telefono"
+                                        <label for="">Telefono</label>
+                                        <input type="number" class="form-control" name="telefono" value="<%= response[0].Telefono %>"
                                             placeholder="Telefono del profesor" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="">Direccion del profesor</label>
-                                        <input type="text" class="form-control" name="direccion"
+                                        <label for="">Direccion</label>
+                                        <input type="text" class="form-control" name="direccion" value="<%= response[0].Direccion %>"
                                             placeholder="Direccion del profesor" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="">Correo del profesor</label>
-                                        <input type="email" class="form-control" name="correo"
+                                        <input type="email" class="form-control" name="correo" value="<%= response[0].Correo %>"
                                             placeholder="Nombre del profesor" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="">Contraseña del profesor</label>
-                                        <input type="password" id="password" class="form-control" name="clave"
+                                        <input type="password" id="password" class="form-control" name="clave" value="<%= response[0].Clave %>"
                                             placeholder="Nombre del profesor" required>
                                         <button id="pass" class="btn btn-primary" type="button">ver
                                             Contraseña</button>
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label" for="customFile">Foto del profesor</label>
-                                        <input type="file" class="form-control" id="customFile" name="foto"
-                                            required />
+                                        <img src="<%= response[0].foto %>" width="80%" alt="">
+                                        <input type="file" class="form-control" id="customFile" name="foto"/>
                                     </div>
                                     <button class="btn btn-success" type="submit">Crear profesor</button>
                                 </form>
                             </div>
                         </div>
-                    </div>
                 </div>
                 <!-- End of Main Content -->
 

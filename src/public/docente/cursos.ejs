@@ -37,7 +37,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">!Bienvenido! <%=usuario[0].rol%>
+                <div class="sidebar-brand-text mx-3">!Bienvenido! <%=usuario.rol%>
                 </div>
             </a>
 
@@ -72,6 +72,10 @@
                     <i class="fa-solid fa-hospital text-gray-400"></i>
                     <span>Mis excusas</span></a>
             </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -144,10 +148,10 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                                    <%=admin[0].Nombreprofesor%>
-                                        <%=admin[0].Apellidoprofesor%>
+                                    <%=admin.Nombre%>
+                                        <%=admin.Apellido%>
                                 </span>
-                                <img class="img-profile rounded-circle" src="<%=usuario[0].foto%>">
+                                <img class="img-profile rounded-circle" src="<%=usuario.foto%>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -171,12 +175,17 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <h1>Bienvenido/a <%=admin[0].Nombreprofesor%> <%=admin[0].Apellidoprofesor%>
-                    </h1>
-                    <p>En este portal podra gestionar todo el proceso que requiera de la institucion, le agradecemos si
-                        encuentra algun error reportarlo ante la institucion ante el area de tecnologia, espero que su
-                        manejo sea el mejor, como esta institucion
-                    </p>
+                    <div class="row">
+                        <% curso.forEach(function (curso){%>
+                            <div class="card m-2" style="width: 18rem;">
+                                <div class="card-body">
+                                  <h5 class="card-title">Curso <%=curso.idcursmat %> </h5>
+                                  <h6 class="card-subtitle mb-2 text-muted">Materia <%=curso.Nombremateria%></h6>
+                                  <a href="/cursos/<%=curso.idcursmat %>" class="btn btn-primary">Ver curso</a>
+                                </div>
+                              </div>
+                            <% }) %>  
+                    </div>
                 </div>
                 <!-- End of Main Content -->
 

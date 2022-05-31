@@ -1,13 +1,42 @@
 const controller = {};
-const mysql = require('../database');
+const mysql = require("../database");
+const multer = require('multer');
 
-controller.getprofesor=(req,res)=>{
-    if(req.session.active){
-    const {id} = req.params;
-    mysql.query('Select * from docente inner join usuario on (Codigoprofesor=idusuarios) Where Codigoprofesor=?',[id],(err,resbd)=>{
-        if (err) {
+controller.getprofesor = (req, res) => {
+  if (req.session.active) {
+    if (Object.keys(req.params).length === 0) {
+      const id = req.session.identificacion;
+      mysql.query(
+        "Select * from docente inner join usuario on (Codigoprofesor=idusuarios) Where Codigoprofesor=?",
+        [id],
+        (err, resbd) => {
+          if (err) {
             throw err;
           } else {
+            console.log(req.session)
+
+            const data = {
+              rol: req.session.rol,
+              foto: req.session.image,
+            };
+            res.render("docente/infopersonal", {
+              usuario: data,
+              admin: { Nombre: req.session.nombre, Apellido: req.session.apellido},
+              response: resbd,
+            });
+          }
+        }
+      );
+    } else {
+      const { id } = req.params;
+      mysql.query(
+        "Select * from docente inner join usuario on (Codigoprofesor=idusuarios) Where Codigoprofesor=?",
+        [id],
+        (err, resbd) => {
+          if (err) {
+            throw err;
+          } else {
+            console.log(resbd)
             const data = {
               rol: req.session.rol,
               foto: req.session.image,
@@ -15,88 +44,176 @@ controller.getprofesor=(req,res)=>{
             res.render("admin/personaindividual", {
               usuario: data,
               admin: { Nombre: req.session.nombre },
-              response: resbd
+              response: resbd,
             });
           }
-    })
+        }
+      );
     }
-}
-controller.inactivarprofesor=(req,res)=>{
-  if(req.session.active){
-    const {id} = req.body;
-    mysql.query('Update usuario Set activo=0 Where idusuarios=?',[id],(err)=>{
-      if(err){
-        throw err
-      }
-      else{
-        res.json({status: "El Usuario ha sido inactivado correctamente"})
-      }
-    })
   }
-}
-
-controller.activarprofesor=(req,res)=>{
-  if(req.session.active){
-    const {id} = req.body;
-    mysql.query('Update usuario Set activo=1 Where idusuarios=?',[id],(err)=>{
-      if(err){
-        throw err
-      }
-      else{
-        res.json({status: "El Usuario ha sido activado correctamente"})
-      }
-    })
+  else {
+    res.render("login", {
+      Error: "Usted no tiene las credenciales para acceder a este sitio",
+    });
   }
-}
+};
+controller.inactivarprofesor = (req, res) => {
+  if (req.session.active) {
+    const { id } = req.body;
+    mysql.query(
+      "Update usuario Set activo=0 Where idusuarios=?",
+      [id],
+      (err) => {
+        if (err) {
+          throw err;
+        } else {
+          res.json({ status: "El Usuario ha sido inactivado correctamente" });
+        }
+      }
+    );
+  }
+  else {
+    res.render("login", {
+      Error: "Usted no tiene las credenciales para acceder a este sitio",
+    });
+  }
+};
 
-controller.mostrarprofesores=(req,res)=>{
-  if(req.session.active){
-    mysql.query('Select * from docente',(err,resbd)=>{
+controller.activarprofesor = (req, res) => {
+  if (req.session.active) {
+    const { id } = req.body;
+    mysql.query(
+      "Update usuario Set activo=1 Where idusuarios=?",
+      [id],
+      (err) => {
+        if (err) {
+          throw err;
+        } else {
+          res.json({ status: "El Usuario ha sido activado correctamente" });
+        }
+      }
+    );
+  }
+  else {
+    res.render("login", {
+      Error: "Usted no tiene las credenciales para acceder a este sitio",
+    });
+  }
+};
+
+controller.mostrarprofesores = (req, res) => {
+  if (req.session.active) {
+    mysql.query("Select * from docente", (err, resbd) => {
       if (err) {
-        throw err
+        throw err;
       } else {
-        mysql.query('Select * from materias',(err,resp)=>{
-          if(err){
+        mysql.query("Select * from materias", (err, resp) => {
+          if (err) {
             throw err;
-          }
-          else{
+          } else {
             res.json({
               datas: resbd,
-              materias: resp
+              materias: resp,
             });
           }
+        });
+      }
+    });
+  }
+  else {
+    res.render("login", {
+      Error: "Usted no tiene las credenciales para acceder a este sitio",
+    });
+  }
+};
+
+controller.asignarcurso = (req, res) => {
+  if(req.session.active){
+    const { nombre, materia, curso } = req.body;
+    const cursodocente = {
+      idcursdoc: curso,
+      iddocente: nombre,
+    };
+    mysql.query("Insert into cursodocente set?", [cursodocente], (err) => {
+      if (err) {
+        throw err;
+      } else {
+        const materias = {
+          idprofmat: nombre,
+          idmatprof: materia,
+          idcursmat: curso,
+        };
+        mysql.query(
+          "Insert into `materias-profesor` set?",
+          [materias],
+          (error) => {
+            if (error) {
+              throw error;
+            } else {
+              res.json({ message: "insertado correctamente" });
+            }
+          }
+        );
+      }
+    });
+  }
+  else {
+    res.render("login", {
+      Error: "Usted no tiene las credenciales para acceder a este sitio",
+    });
+  }
+};
+
+controller.vermiscursos=(req,res)=>{
+  if(req.session.active){
+    const id = req.session.identificacion;
+    mysql.query('select * from `materias-profesor` inner join materias on (idmatprof=Idmateria) where idprofmat=?',[id],(err,resbd)=>{
+      if(err){
+        throw err
+      }
+      else{
+        const data = {
+          rol: req.session.rol,
+          foto: req.session.image,
+        };
+        res.render('docente/cursos',{
+          curso: resbd,
+          usuario: data,
+          admin: { Nombre: req.session.nombre }});
+      }
+    })
+  }
+  else {
+    res.render("login", {
+      Error: "Usted no tiene las credenciales para acceder a este sitio",
+    });
+  }
+}
+
+controller.verexcusa=(req,res)=>{
+  if(req.session.active){
+    mysql.query('Select * From excusas Where numdoc=?',[req.session.identificacion],(err,resp)=>{
+      if(err){
+        throw err
+      }
+      else{
+        const data = {
+          rol: req.session.rol,
+          foto: req.session.image,
+        };
+        res.render('docente/excusas',{
+          data: resp,
+          usuario: data,
+          admin: { Nombre: req.session.nombre }
         })
       }
     })
   }
-}
-
-controller.asignarcurso=(req,res)=>{
-  console.log(req.body);
-  const {nombre, materia, curso} = req.body;
-  const cursodocente = {
-    idcursdoc: curso,
-    iddocente: nombre
+  else {
+    res.render("login", {
+      Error: "Usted no tiene las credenciales para acceder a este sitio",
+    });
   }
-  mysql.query('Insert into cursodocente set?',[cursodocente],(err)=>{
-    if (err) {
-      throw err
-    } else {
-      const materias = {
-        idprofmat: nombre,
-        idmatprof: materia,
-        idcursmat: curso
-      }
-      mysql.query('Insert into `materias-profesor` set?',[materias],(error)=>{
-        if(error){
-          throw error
-        }
-        else{
-          res.json({message: "insertado correctamente"})
-        }
-      })
-    }
-  })
 }
 
 module.exports = controller;
