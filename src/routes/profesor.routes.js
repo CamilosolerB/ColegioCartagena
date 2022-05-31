@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mysql = require("../database");
 const controller = require("../controller/controller.profesor");
+const files = require("../controller/controller.xlsx");
 const multer = require("multer");
 
 //uso de multer
@@ -129,6 +130,7 @@ router.get('/misdatos',controller.getprofesor);
 router.get('/verprofesor',controller.mostrarprofesores);
 router.get('/cursos',controller.vermiscursos);
 router.get('/excusas',controller.verexcusa);
+router.get('/cursos/:id',controller.cursoindi)
 router.put('/inactivar',controller.inactivarprofesor);
 router.put('/activar',controller.activarprofesor);
 router.post('/insertarmateriaprofesor',controller.asignarcurso);

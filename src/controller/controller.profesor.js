@@ -215,5 +215,24 @@ controller.verexcusa=(req,res)=>{
     });
   }
 }
+controller.cursoindi=(req,res)=>{
+  if(req.session.active){
+    const {id} = req.params;
+    req.session.course = id
+    const data = {
+      rol: req.session.rol,
+      foto: req.session.image,
+    };
+    res.render('docente/cursosindi',{
+      usuario: data,
+      admin: { Nombre: req.session.nombre }
+    })
+  }
+  else {
+    res.render("login", {
+      Error: "Usted no tiene las credenciales para acceder a este sitio",
+    });
+  }
+}
 
 module.exports = controller;
