@@ -180,14 +180,14 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h1 class="d-flex p-2">Subir excusas</h1>
-                                    <form>
+                                    <form method="post" action="/profesor/subirnotas" enctype="multipart/form-data">
                                         <label for="">Subir notas (Formato XLSX excel)</label>
-                                        <input type="file" name="pdf" value="" class="form-control" required>
-                                        <button type="submit" class="btn btn-success m-2">Subir excusa</button>
+                                        <input type="file" name="notas" value="" class="form-control" required>
+                                        <button type="submit" class="btn btn-success m-2">Subir notas</button>
                                         <hr class="sidebar-divider">
                                         <label for="">Obtener lista en blanco</label>
                                         <p>Por favor no unir celdas y mantener la Informacion, es libre de personalizar el documento</p>
-                                        <a href="" class="btn btn-primary">Obtener lista</a>
+                                        <a href="/profesor/generarexcel" class="btn btn-primary">Obtener lista</a>
                                     </form>
                                 </div>
                             </div>
