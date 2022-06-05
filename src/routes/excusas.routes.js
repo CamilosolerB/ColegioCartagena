@@ -36,25 +36,33 @@ router.post("/profesor", uploads.single("pdf"), (req, res) => {
           id: id,
           numdoc: req.session.identificacion,
           Documentopdf:
-            "../proyecto/src/static/excusas/docente/" + req.file.filename,
+            "./src/static/excusas/docente/" + req.file.filename,
           fecha: dia,
         };
         mysql.query("Insert into excusas set?", [data], (err) => {
           if (err) {
             res.send(err);
           } else {
-            const foo = {
-              idexcusasdoc: id,
-              idprofesor: req.session.identificacion,
-            };
-            mysql.query(
-              "Insert into `docente-excusas` set?",
-              [foo],
-              (error) => {
+            if (req.session.rol=='profesor') {
+              var foo = {
+                idexcusasdoc: id,
+                idprofesor: req.session.identificacion,
+              };
+              var query = "Insert into `docente-excusas` set?"
+              var redirec = '/profesor/excusas'
+            } else {
+              var foo = {
+                idexcusa: id,
+                excdocestudiante: req.session.identificacion,
+              };
+              var query = "Insert into `estudiante-excusas` set?"
+              var redirec = '/students/excusas'
+            }
+            mysql.query(query,[foo],(error) => {
                 if (error) {
                   res.send(error);
                 } else {
-                  res.redirect("/profesor/excusas");
+                  res.redirect(redirec);
                 }
               }
             );

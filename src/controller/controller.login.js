@@ -55,6 +55,7 @@ controller.iniciosesion=(req,res)=>{
                                     res.json({Error : err})
                                 }
                                 else{
+                                    /* Saving the user's data in the session. */
                                     req.session.rol = resbd[0].rol
                                     req.session.image = resbd[0].foto
                                     req.session.active = true;
