@@ -67,7 +67,7 @@
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="/students/excusas">
                     <i class="fa-solid fa-file-medical"></i>
                     <span>Excusas</span></a>
@@ -82,7 +82,7 @@
             </div>
 
             <!-- Nav Item - Pages Colapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="/students/certificados">
                     <i class="fa-solid fa-certificate"></i>
                     <span>Certificados</span></a>
@@ -187,70 +187,19 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <div class="card">
-                        <div class="card-body">
-                            <h1 class="d-flex p-2">Registrar estudiante</h1>
-                            <% response.forEach( function (data) {%> 
-                            <form action="/students/actualizar" method="post" enctype="multipart/form-data">
-                                <div class="form-group">
-                                    <label for="">Numero de identificacion</label>
-                                    <input type="number" class="form-control" name="cedula" value="<%=data.idusuarios  %>"
-                                        placeholder="Numero de identificacion del estudiante" disabled>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Nombre</label>
-                                    <input type="text" class="form-control" name="nombre" value="<%=data.Nombre  %> "
-                                        placeholder="Nombre del profesor" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Apellido </label>
-                                    <input type="text" class="form-control" name="apellido" value="<%=data.Apellido  %> "
-                                        placeholder="Apellido del profesor" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Edad </label>
-                                    <input type="text" class="form-control" name="edad" value="<%=data.Edad  %> "
-                                        placeholder="Apellido del profesor" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Telefono </label>
-                                    <input type="number" class="form-control" name="telefono" value="<%=data.Telefono  %>"
-                                        placeholder="Telefono del profesor" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Direccion </label>
-                                    <input type="text" class="form-control" name="direccion" value="<%=data.Direccion  %> "
-                                        placeholder="Direccion del profesor" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Tipo de sangre</label>
-                                    <input type="text" name="sangre" id="" class="form-control" value="<%=data.TipoDeSangre  %> ">
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Fecha de nacimiento</label>
-                                    <input type="text" class="form-control" name="fecnac" value="<%=data.Fechanacimiento%> "
-                                        placeholder="Direccion del profesor" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Correo </label>
-                                    <input type="email" class="form-control" name="correo" value="<%=data.Correo  %> "
-                                        placeholder="Nombre del profesor" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Contraseña</label>
-                                    <input type="password" id="password" class="form-control" name="clave" value="<%=data.Clave  %> "
-                                        placeholder="Nombre del profesor" required>
-                                    <button id="pass" class="btn btn-primary" type="button">ver
-                                        Contraseña</button>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label" for="customFile">Foto </label>
-                                    <input type="file" class="form-control" id="customFile" name="foto" />
-                                    <img src="<%=data.foto  %>" alt="" sizes="20vh" srcset="">
-                                </div>
-                                <button class="btn btn-success" type="submit">Actualizar mis datos</button>
-                            </form>
-                            <% }) %> 
+                    <div class="row justify-content-center">
+                        <div class="card">
+                            <div class="card-body">
+                                <h1>Generar certificado</h1>
+                                <p>Solo esta disponible el medio de pago por nequi</p>
+                                <form>
+                                    <label for="">Numero de telefono</label>
+                                    <input type="number" name="telefono" id="telefono" class="form-control">
+                                    <label for="">Correo electronico a enviar</label>
+                                    <input type="email" name="email" id="correo" class="form-control">
+                                    <button class="btn btn-success" id="boton">Generar Certificado</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -309,13 +258,13 @@
     <script src="../js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="../vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
     <script src="../js/demo/chart-area-demo.js"></script>
     <script src="../js/demo/chart-pie-demo.js"></script>
-    <script src="../js/fetch.js"></script>
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/certificados.js"></script>
 </body>
 
 </html>

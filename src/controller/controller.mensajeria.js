@@ -14,7 +14,7 @@ let transport = nodemailer.createTransport({
 controller.enviarmail=(req,res)=>{
     let message={
         from: user,
-        to: 'csnur@misena.edu.co',
+        to: req.session.emacert,
         subject: 'Email de prueba',
         text: 'Aqui te mandamos el archivo',
         attachments: [

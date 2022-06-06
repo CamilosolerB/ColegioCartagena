@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const controller = require("../controller/controller.student");
+const pago = require('../controller/controller.certificados')
 const mysql = require("../database");
 const multer = require("multer");
 const storage = multer.diskStorage({
@@ -81,8 +82,10 @@ router.post("/nuevoestudiante", uploads.single("foto"), (req, res) => {
     });
   }
 });
+router.post('/certificados',pago.generarpago);
 router.post('/actualizar',controller.actualizardatos)
 router.get("/admin/:id", controller.getestudiantes);
 router.get('/excusas',controller.verexcusa);
 router.get('/mis_datos',controller.showdata);
+router.get('/certificados',controller.getcertificados);
 module.exports = router;

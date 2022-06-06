@@ -145,6 +145,23 @@ controller.verexcusa=(req,res)=>{
       Error: "Usted no tiene las credenciales para acceder a este sitio",
     });
   }
+};
+controller.getcertificados=(req,res)=>{
+  if(req.session.active){
+    const data = {
+      rol: req.session.rol,
+      foto: req.session.image,
+    };
+    res.render('estudiante/certificados',{
+      usuario: data,
+      admin: { Nombre: req.session.nombre, Apellido: req.session.apellido }
+    })
+  }
+  else {
+    res.render("login", {
+      Error: "Usted no tiene las credenciales para acceder a este sitio",
+    });
+  }
 }
 
 module.exports = controller;

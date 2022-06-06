@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const path = require('path');
 const ejs = require('ejs');
 const session = require('express-session');
+const cors = require('cors');
 
 
 app.use(session({
@@ -12,6 +13,7 @@ app.use(session({
     saveUninitialized:true
 }));
 //modo de desarrollo y uso de JSON
+app.use(cors())
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
