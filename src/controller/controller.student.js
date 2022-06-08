@@ -81,7 +81,7 @@ controller.actualizardatos=(req,res)=>{
         if(req.file===undefined){
           var query2 = 'Update estudiante SET Nombre="'+nombre+'",Apellido="'+apellido+'",Edad="'+edad+'",Telefono="'+telefono+'",Direccion="'+direccion+'",TipoDeSangre="'+sangre+'",Fechanacimiento="'+fecnac+'" Where Documentoestudiante="'+req.session.identificacion+'"'
           mysql.query(query2,(err)=>{
-            var query = 'Update usuario SET Correo"'+correo+'", Clave="'+clave+'" Where idusuarios="'+req.session.identificacion+'"';
+            var query = 'Update usuario SET Correo="'+correo+'", Clave="'+clave+'" Where idusuarios="'+req.session.identificacion+'"';
             mysql.query(query,(err)=>{
               if(err){
                 throw err;

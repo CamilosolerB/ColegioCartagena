@@ -16,7 +16,7 @@ controller.crearlista= async (req,res)=>{
     if(req.session.active){
         console.log(req.session)
         const workbook = new excel.Workbook();
-        await mysql.query('select * from estudiante inner join estudiantecurso on (Documentoestudiante=idestudiante) where idcurso=?',[req.session.course],(err,resbd)=>{
+        mysql.query('select * from estudiante inner join estudiantecurso on (Documentoestudiante=idestudiante) where idcurso=?',[req.session.course],async(err,resbd)=>{
             const worksheet = workbook.addWorksheet(resbd[0].idcurso);
             const style = workbook.createStyle({
                 font: {
@@ -26,25 +26,29 @@ controller.crearlista= async (req,res)=>{
                 }
               });
               worksheet.cell(1,1).string('Idenficacion').style(style);
-
-              // Set value of cell B1 to 300 as a number type styled with paramaters of style
               worksheet.cell(1,2).string('Nombre Completo').style(style);
-              
-              for (let index = 0; index < resbd.length; index++) {
-                let cells = 2;
-                let nombre  =resbd[index].Nombre +" "+ resbd[index].Apellido
-                worksheet.cell(cells,1).number(resbd[index].Documentoestudiante).style(style);
-                worksheet.cell(cells,2).string(nombre).style(style);
-                cells++;
-              }
+              var cells = 2;
+                resbd.forEach(element => {
+                  let nombre  =element.Nombre +" "+ element.Apellido
+                  worksheet.cell(cells,1).number(element.Documentoestudiante);
+                  worksheet.cell(cells,2).string(nombre);
+                  console.log(nombre);
+                  console.log(element.Documentoestudiante)
+                  cells++;
+                });
               //a
-            workbook.write('Listado.xlsx');
-          
-        })
-        await res.download('Listado.xlsx',function(err){
-            if(err){
-                throw err;
-            }
+            workbook.write('Listado.xlsx', function(err,stas){
+              if(err){
+                console.log(err)
+              }
+              else{
+                res.download('Listado.xlsx',function(err){
+                  if(err){
+                      throw err;
+                  }
+              })
+              }
+            });
         })
     }
     else {
