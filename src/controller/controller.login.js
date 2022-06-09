@@ -61,6 +61,7 @@ controller.iniciosesion=(req,res)=>{
                                     req.session.active = true;
                                     req.session.nombre = respo[0].Nombre;
                                     req.session.apellido = respo[0].Apellido;
+                                    req.session.correo = resbd[0].Correo;
                                     req.session.identificacion = respo[0].Documentoestudiante;
                                     res.render('estudiante/index',{usuario : resbd,admin:respo});
                                 } 

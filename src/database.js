@@ -1,9 +1,9 @@
 const mysql = require('mysql');
 var connection = mysql.createConnection({
-    host:'us-cdbr-east-05.cleardb.net',
-    user:'b063cdeb61e886',
-    password:'694e0c62',
-    database:'heroku_e7250236ba2c461',
+    host:'bslk6hhog904u5rcv98k-mysql.services.clever-cloud.com',
+    user:'udoeef3xihhrnjxr',
+    password:'AXMm4IyvWQBEGK0RP3W1',
+    database:'bslk6hhog904u5rcv98k',
     port:'3306'
 })
 

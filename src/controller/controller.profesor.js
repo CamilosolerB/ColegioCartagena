@@ -223,9 +223,18 @@ controller.cursoindi=(req,res)=>{
       rol: req.session.rol,
       foto: req.session.image,
     };
-    res.render('docente/cursosindi',{
-      usuario: data,
-      admin: { Nombre: req.session.nombre }
+    mysql.query('Select * from `materias-profesor` inner join materias on (idmatprof=Idmateria) Where idprofmat=? AND idcursmat=?',[req.session.identificacion,id],(err,resbb)=>{
+      if(err){
+        throw err;
+      }
+      else{
+        req.session.materia = resbb[0].Idmateria;
+        console.log(req.session);
+        res.render('docente/cursosindi',{
+          usuario: data,
+          admin: { Nombre: req.session.nombre }
+        })
+      }
     })
   }
   else {

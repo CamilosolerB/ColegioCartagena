@@ -72,6 +72,23 @@ controller.subirarchivos=(req,res)=>{
           const sheet = worksheet[0];
           const data = xlsx.utils.sheet_to_json(workbook.Sheets[sheet])
           console.log(data);
+           mysql.query('Select MAX(Idnota) as idnota from notas',(err,resbd)=>{
+            if(err){
+              throw err;
+            }
+            else{
+              var idnota = resbd[0].idnota;
+              var notas = data.map(function(info){
+                var consolidado = {};
+              })
+              data.forEach(element=>{
+                notas = {
+                  Idnota: idnota
+                }
+                mysql.query('Insert into notas set?')
+              })
+            }
+          }) 
         }
         else{
           res.redirect('/profesor/cursos/')

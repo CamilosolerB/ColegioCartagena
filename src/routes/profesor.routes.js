@@ -42,7 +42,7 @@ const almacen = multer.diskStorage({
   },
 });
 const upload = multer({ storage: almacen });
-
+//a
 router.post("/nuevoprofesor", uploads.single("foto"), (req, res) => {
   if (req.session.active) {
     const { cedula, correo, clave } = req.body;

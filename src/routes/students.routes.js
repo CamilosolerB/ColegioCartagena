@@ -88,4 +88,5 @@ router.get("/admin/:id", controller.getestudiantes);
 router.get('/excusas',controller.verexcusa);
 router.get('/mis_datos',controller.showdata);
 router.get('/certificados',controller.getcertificados);
+router.get('/documento',pago.generarpdf);
 module.exports = router;
