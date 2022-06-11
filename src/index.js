@@ -1,3 +1,4 @@
+/* Importing the modules that are needed for the server to work. */
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
@@ -8,6 +9,7 @@ const cors = require('cors');
 const mongo = require('./dbmongo');
 
 
+/* Setting up a session. */
 app.use(session({
     resave:true,
     secret:'1234',
@@ -37,7 +39,6 @@ app.set('views', path.join(__dirname,'public'));
 
 //uso de archivos estaticos
 /* Telling the server to use the public folder as the root folder for the server. */
-//app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname,'public')));
 app.use(express.static(path.join(__dirname,"static")));
 

@@ -243,5 +243,5 @@ controller.cursoindi=(req,res)=>{
     });
   }
 }
-
+//
 module.exports = controller;

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Vista estudiante</title>
+    <title>Excusas</title>
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -33,11 +33,11 @@
         <ul class="navbar-nav bg-gradient-warning sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/students/mis_datos">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">!Bienvenido! <%=usuario[0].rol%>
+                <div class="sidebar-brand-text mx-3">!Bienvenido! <%=usuario.rol%>
                 </div>
             </a>
 
@@ -45,7 +45,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="/students/mis_datos">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -56,7 +56,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Opciones 
+                Opciones
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -67,7 +67,7 @@
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="/students/excusas">
                     <i class="fa-solid fa-file-medical"></i>
                     <span>Excusas</span></a>
@@ -92,13 +92,13 @@
             <hr class="sidebar-divider d-none d-md-block">
             <div class="sidebar-heading">
                 Others
-            </div>           
+            </div>
             <li class="nav-item">
-                <a class="nav-link" href="students/padres">
+                <a class="nav-link" href="/students/padres">
                     <i class="fa-solid fa-people-group"></i>
                     <span>Acudientes</span></a>
             </li>
-
+            <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -160,10 +160,10 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                                    <%=admin[0].Nombre%>
-                                        <%=admin[0].Apellido%>
+                                    <%=admin.Nombre%>
+                                        <%=admin.Apellido%>
                                 </span>
-                                <img class="img-profile rounded-circle" src="<%=usuario[0].foto%>">
+                                <img class="img-profile rounded-circle" src="<%=usuario.foto%>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -187,72 +187,106 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <h1>Bienvenido/a <%=admin[0].Nombre%> <%=admin[0].Apellido%>
-                    </h1>
-                    <p>En este portal podra gestionar todo el proceso que requiera de la institucion, le agradecemos si
-                        encuentra algun error reportarlo ante la institucion ante el area de tecnologia, espero que su
-                        manejo sea el mejor, como esta institucion
-                    </p>
-                </div>
-                <!-- End of Main Content -->
-
-                <!-- Footer -->
-                <footer class="sticky-footer bg-white">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Your Website 2021</span>
+                    <h1>Informacion de los padres</h1>
+                    <form action="">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card body">
+                                        <input type="text" class="form form-control">
+                                        <input type="text" class="form form-control">
+                                        <input type="text" class="form form-control">
+                                        <input type="text" class="form form-control">
+                                        <input type="text" class="form form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card body">
+                                        <input type="text" class="form form-control">
+                                        <input type="text" class="form form-control">
+                                        <input type="text" class="form form-control">
+                                        <input type="text" class="form form-control">
+                                        <input type="text" class="form form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card body">
+                                        <input type="text" class="form form-control">
+                                        <input type="text" class="form form-control">
+                                        <input type="text" class="form form-control">
+                                        <input type="text" class="form form-control">
+                                        <input type="text" class="form form-control">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </footer>
-                <!-- End of Footer -->
-
+                        <button class="btn btn-success">Actualizar padres</button>
+                    </form>
+                </div>
             </div>
-            <!-- End of Content Wrapper -->
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2021</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
 
         </div>
-        <!-- End of Page Wrapper -->
+        <!-- End of Content Wrapper -->
 
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
-        </a>
+    </div>
+    <!-- End of Page Wrapper -->
 
-        <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.html">Logout</a>
-                    </div>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Bootstrap core JavaScript-->
-        <script src="../vendor/jquery/jquery.min.js"></script>
-        <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-        <!-- Core plugin JavaScript-->
-        <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
-        <!-- Custom scripts for all pages-->
-        <script src="../js/sb-admin-2.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="../js/sb-admin-2.min.js"></script>
 
-        <!-- Page level plugins -->
-        <script src="vendor/chart.js/Chart.min.js"></script>
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
 
-        <!-- Page level custom scripts -->
-        <script src="../js/demo/chart-area-demo.js"></script>
-        <script src="../js/demo/chart-pie-demo.js"></script>
+    <!-- Page level custom scripts -->
+    <script src="../js/demo/chart-area-demo.js"></script>
+    <script src="../js/demo/chart-pie-demo.js"></script>
 
 </body>
 

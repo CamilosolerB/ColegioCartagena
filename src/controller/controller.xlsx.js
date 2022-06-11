@@ -3,6 +3,7 @@ const xlsx = require('xlsx');
 const controller = {};
 const mysql = require('../database');
 const multer = require('multer');
+const notas = require('../models/notas')
 const storage = multer.diskStorage({
   destination: function(req,file,cb){
       cb(null, 'src/static/notas')
@@ -58,7 +59,7 @@ controller.crearlista= async (req,res)=>{
       }
 }
 
-controller.subirarchivos=(req,res)=>{
+controller.subirarchivos=async(req,res)=>{
   uploads.single('notas')(req,res, function(err){
     if(err){
       throw err;
@@ -71,25 +72,17 @@ controller.subirarchivos=(req,res)=>{
         if(worksheet[0] === req.session.course){
           const sheet = worksheet[0];
           const data = xlsx.utils.sheet_to_json(workbook.Sheets[sheet])
-          console.log(data);
-           /*mysql.query('Select MAX(Idnota) as idnota from notas',(err,resbd)=>{
-            if(err){
-              throw err;
-            }
-            else{
-              var idnota = resbd[0].idnota;
-              var notas = data.map(function(info){
-                var consolidado = {};
-              })
-              data.forEach(element=>{
-                notas = {
-                  Idnota: idnota
-                }
-                mysql.query('Insert into notas set?')
-              })
-            }
-          })*/ 
-          //
+          const aditional = {
+            profesor: req.session.identificacion,
+            curso: req.session.course,
+            materia: req.session.materia
+          }
+          data.forEach(element => {
+            const data = Object.assign(aditional,element);
+            const note = new notas(data);
+            note.save();
+          });
+          res.json({messge: 'notas subidas correctamente'})
         }
         else{
           res.redirect('/profesor/cursos/')

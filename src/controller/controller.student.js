@@ -163,5 +163,29 @@ controller.getcertificados=(req,res)=>{
     });
   }
 }
+controller.getpadres=(req,res)=>{
+  if(req.session.active){
+    mysql.query('Select * from padresacudientes where Documentoestudiantepad=?',[req.session.identificacion],(err,resbd)=>{
+      if(err){
+        throw err;
+      }
+      else{
+        const data = {
+          rol: req.session.rol,
+          foto: req.session.image,
+        };
+        res.render('estudiante/padres',{
+          usuario: data,
+          admin: { Nombre: req.session.nombre, Apellido: req.session.apellido}
+        })
+      }
+    })
+  }
+  else {
+    res.render("login", {
+      Error: "Usted no tiene las credenciales para acceder a este sitio",
+    });
+  }
+}
 
 module.exports = controller;

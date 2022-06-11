@@ -180,10 +180,10 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h1 class="d-flex p-2">Subir excusas</h1>
-                                    <form method="post" action="/profesor/subirnotas" enctype="multipart/form-data">
+                                    <form method="post">
                                         <label for="">Subir notas (Formato XLSX excel)</label>
-                                        <input type="file" name="notas" value="" class="form-control" required>
-                                        <button type="submit" class="btn btn-success m-2">Subir notas</button>
+                                        <input type="file" name="notas" id="notas" value="" class="form-control" required>
+                                        <button type="button" id="upload" class="btn btn-success m-2">Subir notas</button>
                                         <hr class="sidebar-divider">
                                         <label for="">Obtener lista en blanco</label>
                                         <p>Por favor no unir celdas y mantener la Informacion, es libre de personalizar el documento</p>
@@ -193,17 +193,8 @@
                             </div>
                         </div>
                         <div class="col-md-6">
+                            <button class="btn btn-warming">Mostrar notas</button>
                             <div class="container">
-                                <table class="table table-striped" id="table_id">
-                                    <thead class="thead-dark">
-                                        <th>Numero de identificacion</th>
-                                        <th>Nombre completo</th>
-                                        <th>Opciones</th>
-                                    </thead>
-                                    <tbody>
-
-                                    </tbody>
-                                </table>
                             </div>
                         </div>
                     </div>
@@ -267,6 +258,8 @@
         <!-- Page level custom scripts -->
         <script src="../../js/demo/chart-area-demo.js"></script>
         <script src="../../js/demo/chart-pie-demo.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="../../js/subirxlsx.js"></script>
 
 </body>
 
