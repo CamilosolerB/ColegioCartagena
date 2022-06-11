@@ -72,7 +72,7 @@ controller.subirarchivos=(req,res)=>{
           const sheet = worksheet[0];
           const data = xlsx.utils.sheet_to_json(workbook.Sheets[sheet])
           console.log(data);
-           mysql.query('Select MAX(Idnota) as idnota from notas',(err,resbd)=>{
+           /*mysql.query('Select MAX(Idnota) as idnota from notas',(err,resbd)=>{
             if(err){
               throw err;
             }
@@ -88,7 +88,8 @@ controller.subirarchivos=(req,res)=>{
                 mysql.query('Insert into notas set?')
               })
             }
-          }) 
+          })*/ 
+          //
         }
         else{
           res.redirect('/profesor/cursos/')
