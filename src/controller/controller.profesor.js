@@ -238,7 +238,8 @@ controller.cursoindi=(req,res)=>{
             console.log(req.session);
             res.render('docente/cursosindi',{
               usuario: data,
-              admin: { Nombre: req.session.nombre }
+              admin: { Nombre: req.session.nombre },
+              notas: docs
             })
           }
         })

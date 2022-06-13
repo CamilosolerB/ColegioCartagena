@@ -194,7 +194,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-warning" id="traer">Mostrar notas</button>
+                            <% if(notas.length != 0){ %> 
                             <div class="container" id="container">
                                 <table class="table table-striped" id="table">
                                     <thead class="table-primary">
@@ -210,11 +210,24 @@
                                       <th>Promedio</th>
                                     </tr>
                                     </thead>
-                                    <tbody class="tbody" id="tbody">
-
+                                    <tbody>
+                                        <% notas.forEach(notas=> {%> 
+                                        <tr>
+                                            <td><%=notas.Idenficacion%><td>
+                                            <td><%=notas.NombreCompleto%><td>
+                                            <td><%=notas.Nota1%><td>
+                                            <td><%=notas.Nota2%><td>
+                                            <td><%=notas.Nota3%><td>
+                                            <td><%=notas.Nota4%><td>
+                                            <td><%=notas.Nota5%><td>
+                                            <td><%=notas.Nota6%><td>
+                                            <td><%=notas.Promedio%><td>
+                                          </tr>
+                                        <%})%>  
                                     </tbody>
                                 </table>
                             </div>
+                            <% }%> 
                         </div>
                     </div>
                 </div>
@@ -279,6 +292,11 @@
         <script src="../../js/demo/chart-pie-demo.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('#table').DataTable();
+            });
+        </script>
         <script src="../../js/subirxlsx.js"></script>
 
 </body>
