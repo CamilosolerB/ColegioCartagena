@@ -1,6 +1,7 @@
 const controller = {}
 const mysql = require('../database');
 const multer = require("multer");
+const notas = require('../models/notas');
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "src/static/students");
@@ -179,6 +180,40 @@ controller.getpadres=(req,res)=>{
           usuario: data,
           admin: { Nombre: req.session.nombre, Apellido: req.session.apellido},
           padres: resbd
+        })
+      }
+    })
+  }
+  else {
+    res.render("login", {
+      Error: "Usted no tiene las credenciales para acceder a este sitio",
+    });
+  }
+}
+controller.vermisnotas=(req,res)=>{
+  if(req.session.active){
+    mysql.query('Select * from estudiantecurso Where idestudiante=? Group by idcurso',[req.session.identificacion],(err,resbd)=>{
+      if(err){
+        throw err;
+      }
+      else{
+        let curso = resbd[0].idcurso
+        var course = curso.toString();
+        notas.find({Idenficacion:req.session.identificacion,curso:course},function (err,info) {
+          if(err){
+            throw err;
+          }
+          else{
+            const data = {
+              rol: req.session.rol,
+              foto: req.session.image,
+            };
+            res.render('estudiante/cursos',{
+              usuario: data,
+              admin: { Nombre: req.session.nombre, Apellido: req.session.apellido},
+              curso: info
+            })
+          }
         })
       }
     })

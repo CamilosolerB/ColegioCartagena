@@ -78,17 +78,25 @@ controller.subirarchivos=async(req,res)=>{
         if(worksheet[0] === req.session.course){
           const sheet = worksheet[0];
           const data = xlsx.utils.sheet_to_json(workbook.Sheets[sheet])
-          const aditional = {
-            profesor: req.session.identificacion,
-            curso: req.session.course,
-            materia: req.session.materia
-          }
-          data.forEach(element => {
-            const data = Object.assign(aditional,element);
-            const note = new notas(data);
-            note.save();
-          });
-          res.json({message: 'notas subidas correctamente'})
+          mysql.query('Select * from materias Where Idmateria =?',[req.session.materia],(err,resbd)=>{
+            if(err){
+              throw err;
+            }
+            else{
+              const aditional = {
+                profesor: req.session.identificacion,
+                curso: req.session.course,
+                materia: req.session.materia,
+                Nombremateria: resbd[0].Nombremateria
+              }
+              data.forEach(element => {
+                const data = Object.assign(aditional,element);
+                const note = new notas(data);
+                note.save();
+              });
+              res.json({message: 'notas subidas correctamente'})
+            }
+          })
         }
         else{
           res.redirect('/profesor/cursos/')
@@ -100,6 +108,6 @@ controller.subirarchivos=async(req,res)=>{
   })
 }
 
-//as
+//a
 module.exports= controller;
 

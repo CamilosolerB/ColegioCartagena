@@ -90,4 +90,5 @@ router.get('/mis_datos',controller.showdata);
 router.get('/certificados',controller.getcertificados);
 router.get('/documento',pago.generarpdf);
 router.get('/padres',controller.getpadres);
+router.get('/notas',controller.vermisnotas);
 module.exports = router;

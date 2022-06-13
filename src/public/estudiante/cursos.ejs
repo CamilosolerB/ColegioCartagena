@@ -67,7 +67,7 @@
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="/students/excusas">
                     <i class="fa-solid fa-file-medical"></i>
                     <span>Excusas</span></a>
@@ -82,7 +82,7 @@
             </div>
 
             <!-- Nav Item - Pages Colapse Menu -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="/students/certificados">
                     <i class="fa-solid fa-certificate"></i>
                     <span>Certificados</span></a>
@@ -187,17 +187,28 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <div class="row justify-content-center">
-                        <div class="card">
-                            <div class="card-body">
-                                <h1>Generar certificado</h1>
-                                <p>Solo esta disponible el medio de pago por payu</p>
-                                <a href="https://biz.payulatam.com/B0ed74852E5918C"><img src="https://ecommerce.payulatam.com/img-secure-2015/boton_pagar_grande.png"></a>
-                            </div>
-                        </div>
+                    <div class="row">
+                        <% curso.forEach(element => {%>
+                            <div class="card" style="width: 18rem;">
+                                <img src="https://p4.wallpaperbetter.com/wallpaper/627/187/651/royal-blue-wallpaper-preview.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title"><%=element.Nombremateria%> </h5>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                  <li class="list-group-item">Nota 1: <%=element.Nota1%></li>
+                                  <li class="list-group-item">Nota 2: <%=element.Nota2%></li>
+                                  <li class="list-group-item">Nota 3: <%=element.Nota3%></li>
+                                  <li class="list-group-item">Nota 4: <%=element.Nota4%></li>
+                                  <li class="list-group-item">Nota 5: <%=element.Nota5%></li>
+                                  <li class="list-group-item">Nota 6: <%=element.Nota6%></li>
+                                </ul>
+                                <div class="card-body">
+                                  <p>PROMEDIO: <%=element.Promedio%></p>
+                                </div>
+                              </div>
+                        <%})%> 
                     </div>
                 </div>
-            </div>
             <!-- End of Main Content -->
 
             <!-- Footer -->
@@ -252,13 +263,12 @@
     <script src="../js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="../vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
     <script src="../js/demo/chart-area-demo.js"></script>
     <script src="../js/demo/chart-pie-demo.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="../js/certificados.js"></script>
+
 </body>
 
 </html>
