@@ -187,45 +187,141 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <h1>Informacion de los padres</h1>
-                    <form action="">
-                        <div class="row">
-                            <div class="col">
-                                <div class="card">
-                                    <div class="card body">
-                                        <input type="text" class="form form-control">
-                                        <input type="text" class="form form-control">
-                                        <input type="text" class="form form-control">
-                                        <input type="text" class="form form-control">
-                                        <input type="text" class="form form-control">
+                    <h1><%=padres%> </h1>
+                    <%if(padres.lenght!=0){%>
+                        <% padres.forEach(function(data){%> 
+                        <h1 style="text-align: center;">Informacion de los padres</h1>
+                        <form action="/student/actualizarpapa" method="post">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card p-4">
+                                        <div class="card body">
+                                            <h1>Informacion padre</h1>
+                                            <label for="">Nombre</label>
+                                            <input type="text" class="form-control" name="nombrep"
+                                                value="<%=data.Nombrepadre%>">
+                                            <label for="">Apellido</label>
+                                            <input type="text" class="form-control" name="apellidop"
+                                                value="<%=data.Apellidopadre%>">
+                                            <label for="">Telefono</label>
+                                            <input type="number" class="form-control" name="telefonop"
+                                                value="<%=data.Telefonopadre%>">
+                                            <label for="">Correo electronico</label>
+                                            <input type="email" class="form-control" name="correop"
+                                                value="<%=data.Correopadre%>">
+                                            <label for="">Ocupacion</label>
+                                            <input type="text" class="form-control" name="ocupacionp"
+                                                value="<%=data.Ocupacionpadre%>">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card p-4">
+                                        <div class="card body">
+                                            <h1>Informacion madre</h1>
+                                            <label for="">Nombre madre</label>
+                                            <input type="text" class="form-control" name="nombrem"
+                                                value="<%=data.Nombremadre%>">
+                                            <label for="">Apellido</label>
+                                            <input type="text" class="form-control" name="apellidom"
+                                                value="<%=data.Apellidomadre%>">
+                                            <label for="">Telefono</label>
+                                            <input type="number" class="form-control" name="telefonom"
+                                                value="<%=data.Telefonomadre%>">
+                                            <label for="">Correo electronico</label>
+                                            <input type="email" class="form-control" name="correom"
+                                                value="<%=data.Correomadre%>">
+                                            <label for="">Ocupacion</label>
+                                            <input type="text" class="form-control" name="ocupacionm"
+                                                value="<%=data.Ocupacionmadre%>">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card p-4">
+                                        <div class="card body">
+                                            <h1>Informacion acudiente</h1>
+                                            <label for="">Nombre acudiente</label>
+                                            <input type="text" class="form-control" name="nombrea"
+                                                value="<%=data.Nombreacudiente%>">
+                                            <label for="">Apellido</label>
+                                            <input type="text" class="form-control" name="apellidoa"
+                                                value="<%=data.Apellidoacudiente%>">
+                                            <label for="">Telefono</label>
+                                            <input type="number" class="form-control" name="telefonoa"
+                                                value="<%=data.Telefonoacudiente%>">
+                                            <label for="">Correo electronico</label>
+                                            <input type="email" class="form-control" name="correoa"
+                                                value="<%=data.Correoacudiente%>">
+                                            <label for="">Ocupacion</label>
+                                            <input type="text" class="form-control" name="ocupaciona"
+                                                value="<%=data.Ocupacionacudiente%>">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col">
-                                <div class="card">
-                                    <div class="card body">
-                                        <input type="text" class="form form-control">
-                                        <input type="text" class="form form-control">
-                                        <input type="text" class="form form-control">
-                                        <input type="text" class="form form-control">
-                                        <input type="text" class="form form-control">
+                            <button class="btn btn-success">Agregar padres</button>
+                        </form>
+                        <%})%> 
+                        <%}else{ %>
+                            <h1>Informacion de los padres</h1>
+                            <form action="/students/agregarpapa" method="post">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card body p-4">
+                                                <h1>Informacion padre</h1>
+                                                <label for="">Nombre</label>
+                                                <input type="text" class="form-control" name="nombrep">
+                                                <label for="">Apellido</label>
+                                                <input type="text" class="form-control" name="apellidop">
+                                                <label for="">Telefono</label>
+                                                <input type="number" class="form-control" name="telefonop">
+                                                <label for="">Correo electronico</label>
+                                                <input type="email" class="form-control" name="correop">
+                                                <label for="">Ocupacion</label>
+                                                <input type="text" class="form-control" name="ocupacionp">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card p-4">
+                                            <div class="card body">
+                                                <h1>Informacion madre</h1>
+                                                <label for="">Nombre madre</label>
+                                                <input type="text" class="form-control" name="nombrem">
+                                                <label for="">Apellido</label>
+                                                <input type="text" class="form-control" name="apellidom">
+                                                <label for="">Telefono</label>
+                                                <input type="number" class="form-control" name="telefonom">
+                                                <label for="">Correo electronico</label>
+                                                <input type="email" class="form-control" name="correom">
+                                                <label for="">Ocupacion</label>
+                                                <input type="text" class="form-control" name="ocupacionm">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card p-4">
+                                            <div class="card body">
+                                                <h1>Informacion acudiente</h1>
+                                                <label for="">Nombre acudiente</label>
+                                                <input type="text" class="form-control" name="nombrea">
+                                                <label for="">Apellido</label>
+                                                <input type="text" class="form-control" name="apellidoa">
+                                                <label for="">Telefono</label>
+                                                <input type="number" class="form-control" name="telefonoa">
+                                                <label for="">Correo electronico</label>
+                                                <input type="email" class="form-control" name="correoa">
+                                                <label for="">Ocupacion</label>
+                                                <input type="text" class="form-control" name="ocupaciona">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <div class="card body">
-                                        <input type="text" class="form form-control">
-                                        <input type="text" class="form form-control">
-                                        <input type="text" class="form form-control">
-                                        <input type="text" class="form form-control">
-                                        <input type="text" class="form form-control">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="btn btn-success">Actualizar padres</button>
-                    </form>
+                                <button class="btn btn-success">Agregar padres</button>
+                            </form>
+                            <% } %>
                 </div>
             </div>
             <!-- End of Main Content -->

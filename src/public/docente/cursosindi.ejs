@@ -22,6 +22,7 @@
     <!-- fevicon -->
     <link rel="icon" href="../../img/logo.png" type="image/gif" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 </head>
 
 <body id="page-top">
@@ -193,8 +194,26 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-warming">Mostrar notas</button>
-                            <div class="container">
+                            <button class="btn btn-warning" id="traer">Mostrar notas</button>
+                            <div class="container" id="container">
+                                <table class="table table-striped" id="table">
+                                    <thead class="table-primary">
+                                    <tr>
+                                      <th>Documento</th>
+                                      <th>Nombre completo</th>
+                                      <th>Nota 1</th>
+                                      <th>Nota 2</th>
+                                      <th>Nota 3</th>
+                                      <th>Nota 4</th>
+                                      <th>Nota 5</th>
+                                      <th>Nota 6</th>
+                                      <th>Promedio</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="tbody" id="tbody">
+
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -241,7 +260,7 @@
                 </div>
             </div>
         </div>
-
+        <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
         <!-- Bootstrap core JavaScript-->
         <script src="../../vendor/jquery/jquery.min.js"></script>
         <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -259,6 +278,7 @@
         <script src="../../js/demo/chart-area-demo.js"></script>
         <script src="../../js/demo/chart-pie-demo.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
         <script src="../../js/subirxlsx.js"></script>
 
 </body>

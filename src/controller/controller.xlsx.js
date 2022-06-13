@@ -3,7 +3,8 @@ const xlsx = require('xlsx');
 const controller = {};
 const mysql = require('../database');
 const multer = require('multer');
-const notas = require('../models/notas')
+
+
 const storage = multer.diskStorage({
   destination: function(req,file,cb){
       cb(null, 'src/static/notas')
@@ -27,14 +28,19 @@ controller.crearlista= async (req,res)=>{
                 }
               });
               worksheet.cell(1,1).string('Idenficacion').style(style);
-              worksheet.cell(1,2).string('Nombre Completo').style(style);
+              worksheet.cell(1,2).string('NombreCompleto').style(style);
+              worksheet.cell(1,3).string('Nota1').style(style);
+              worksheet.cell(1,4).string('Nota2').style(style);
+              worksheet.cell(1,5).string('Nota3').style(style);
+              worksheet.cell(1,6).string('Nota4').style(style);
+              worksheet.cell(1,7).string('Nota5').style(style);
+              worksheet.cell(1,8).string('Nota6').style(style);
+              worksheet.cell(1,9).string('Promedio').style(style);
               var cells = 2;
                 resbd.forEach(element => {
                   let nombre  =element.Nombre +" "+ element.Apellido
                   worksheet.cell(cells,1).number(element.Documentoestudiante);
                   worksheet.cell(cells,2).string(nombre);
-                  console.log(nombre);
-                  console.log(element.Documentoestudiante)
                   cells++;
                 });
               //a
@@ -82,7 +88,7 @@ controller.subirarchivos=async(req,res)=>{
             const note = new notas(data);
             note.save();
           });
-          res.json({messge: 'notas subidas correctamente'})
+          res.json({message: 'notas subidas correctamente'})
         }
         else{
           res.redirect('/profesor/cursos/')
@@ -93,5 +99,7 @@ controller.subirarchivos=async(req,res)=>{
     }
   })
 }
-//a
+
+//as
 module.exports= controller;
+

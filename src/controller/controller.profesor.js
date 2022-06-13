@@ -1,6 +1,7 @@
 const controller = {};
 const mysql = require("../database");
 const multer = require('multer');
+const notas = require('../models/notas');
 
 controller.getprofesor = (req, res) => {
   if (req.session.active) {
@@ -229,10 +230,17 @@ controller.cursoindi=(req,res)=>{
       }
       else{
         req.session.materia = resbb[0].Idmateria;
-        console.log(req.session);
-        res.render('docente/cursosindi',{
-          usuario: data,
-          admin: { Nombre: req.session.nombre }
+        notas.find({profesor:req.session.identificacion,curso:req.session.course,materia:req.session.materia},function(err,docs){
+          if(err){
+            throw err;
+          }
+          else{
+            console.log(req.session);
+            res.render('docente/cursosindi',{
+              usuario: data,
+              admin: { Nombre: req.session.nombre }
+            })
+          }
         })
       }
     })

@@ -170,13 +170,15 @@ controller.getpadres=(req,res)=>{
         throw err;
       }
       else{
+        console.log(resbd)
         const data = {
           rol: req.session.rol,
           foto: req.session.image,
         };
         res.render('estudiante/padres',{
           usuario: data,
-          admin: { Nombre: req.session.nombre, Apellido: req.session.apellido}
+          admin: { Nombre: req.session.nombre, Apellido: req.session.apellido},
+          padres: resbd
         })
       }
     })
