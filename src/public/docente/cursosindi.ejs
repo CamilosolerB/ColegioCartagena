@@ -208,6 +208,7 @@
                                       <th>Nota 5</th>
                                       <th>Nota 6</th>
                                       <th>Promedio</th>
+                                      <th>Editar</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -215,13 +216,14 @@
                                         <tr>
                                             <td><%=notas.Idenficacion%></td>
                                             <td><%=notas.NombreCompleto%></td>
-                                            <td><input type="number" name="" id="nota1" value="<%=notas.Nota1%>"></td>
-                                            <td><input type="number" name="" id="nota2" value="<%=notas.Nota2%>"></td>
-                                            <td><input type="number" name="" id="nota3" value="<%=notas.Nota3%>"></td>
-                                            <td><input type="number" name="" id="nota4" value="<%=notas.Nota4%>"></td>
-                                            <td><input type="number" name="" id="nota5" value="<%=notas.Nota5%>"></td>
-                                            <td><input type="number" name="" id="nota6" value="<%=notas.Nota6%>"></td>
-                                            <td><input type="number" name="" id="promedio" value="<%=notas.Promedio%>"></td>
+                                            <td><input type="number" name="" class="form-control" id="nota1" value="<%=notas.Nota1%>"></td>
+                                            <td><input type="number" name="" class="form-control" id="nota2" value="<%=notas.Nota2%>"></td>
+                                            <td><input type="number" name="" class="form-control" id="nota3" value="<%=notas.Nota3%>"></td>
+                                            <td><input type="number" name="" class="form-control" id="nota4" value="<%=notas.Nota4%>"></td>
+                                            <td><input type="number" name="" class="form-control" id="nota5" value="<%=notas.Nota5%>"></td>
+                                            <td><input type="number" name="" class="form-control" id="nota6" value="<%=notas.Nota6%>"></td>
+                                            <td><input type="number" name="" class="form-control" id="promedio" value="<%=notas.Promedio%>"></td>
+                                            <td><button value="<%=notas.Idenficacion%>" class="btn btn-primary" id="boton"><i class="fa-solid fa-pen-clip"></i></button></td>
                                           </tr>
                                         <%})%>  
                                     </tbody>

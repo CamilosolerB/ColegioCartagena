@@ -1,5 +1,10 @@
 $(document).ready(function(){
   $('#table').DataTable();
+  $('.btn.btn-primary').on('click', function(){
+    let boton=$('.btn.btn-primary').index(this);
+    console.log(boton)
+  })
+
 });  
 function subirexcel() {
   Swal.fire({
