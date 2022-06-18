@@ -213,15 +213,15 @@
                                     <tbody>
                                         <% notas.forEach(notas=> {%> 
                                         <tr>
-                                            <td><%=notas.Idenficacion%><td>
-                                            <td><%=notas.NombreCompleto%><td>
-                                            <td><%=notas.Nota1%><td>
-                                            <td><%=notas.Nota2%><td>
-                                            <td><%=notas.Nota3%><td>
-                                            <td><%=notas.Nota4%><td>
-                                            <td><%=notas.Nota5%><td>
-                                            <td><%=notas.Nota6%><td>
-                                            <td><%=notas.Promedio%><td>
+                                            <td><%=notas.Idenficacion%></td>
+                                            <td><%=notas.NombreCompleto%></td>
+                                            <td><input type="number" name="" id="nota1" value="<%=notas.Nota1%>"></td>
+                                            <td><input type="number" name="" id="nota2" value="<%=notas.Nota2%>"></td>
+                                            <td><input type="number" name="" id="nota3" value="<%=notas.Nota3%>"></td>
+                                            <td><input type="number" name="" id="nota4" value="<%=notas.Nota4%>"></td>
+                                            <td><input type="number" name="" id="nota5" value="<%=notas.Nota5%>"></td>
+                                            <td><input type="number" name="" id="nota6" value="<%=notas.Nota6%>"></td>
+                                            <td><input type="number" name="" id="promedio" value="<%=notas.Promedio%>"></td>
                                           </tr>
                                         <%})%>  
                                     </tbody>
