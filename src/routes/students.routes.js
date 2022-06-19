@@ -83,7 +83,8 @@ router.post("/nuevoestudiante", uploads.single("foto"), (req, res) => {
   }
 });
 router.post('/certificados',pago.generarpago);
-router.post('/actualizar',controller.actualizardatos)
+router.post('/actualizar',controller.actualizardatos);
+router.post('/agregarpapa',controller.insertarpadre);
 router.get("/admin/:id", controller.getestudiantes);
 router.get('/excusas',controller.verexcusa);
 router.get('/mis_datos',controller.showdata);

@@ -196,15 +196,15 @@
                                             <div class="card body p-4">
                                                 <h1>Informacion padre</h1>
                                                 <label for="">Nombre</label>
-                                                <input type="text" class="form-control" name="nombrep">
+                                                <input type="text" class="form-control" name="Nombrepadre">
                                                 <label for="">Apellido</label>
-                                                <input type="text" class="form-control" name="apellidop">
+                                                <input type="text" class="form-control" name="Apellidopadre">
                                                 <label for="">Telefono</label>
-                                                <input type="number" class="form-control" name="telefonop">
+                                                <input type="number" class="form-control" name="Telefonopadre">
                                                 <label for="">Correo electronico</label>
-                                                <input type="email" class="form-control" name="correop">
+                                                <input type="email" class="form-control" name="Correopadre">
                                                 <label for="">Ocupacion</label>
-                                                <input type="text" class="form-control" name="ocupacionp">
+                                                <input type="text" class="form-control" name="Ocupacionpadre">
                                             </div>
                                         </div>
                                     </div>
@@ -213,15 +213,15 @@
                                             <div class="card body">
                                                 <h1>Informacion madre</h1>
                                                 <label for="">Nombre madre</label>
-                                                <input type="text" class="form-control" name="nombrem">
+                                                <input type="text" class="form-control" name="Nombremadre">
                                                 <label for="">Apellido</label>
-                                                <input type="text" class="form-control" name="apellidom">
+                                                <input type="text" class="form-control" name="Apellidomadre">
                                                 <label for="">Telefono</label>
-                                                <input type="number" class="form-control" name="telefonom">
+                                                <input type="number" class="form-control" name="Telefonomadre">
                                                 <label for="">Correo electronico</label>
-                                                <input type="email" class="form-control" name="correom">
+                                                <input type="email" class="form-control" name="Correomadre">
                                                 <label for="">Ocupacion</label>
-                                                <input type="text" class="form-control" name="ocupacionm">
+                                                <input type="text" class="form-control" name="Ocupacionmadre">
                                             </div>
                                         </div>
                                     </div>
@@ -230,20 +230,20 @@
                                             <div class="card body">
                                                 <h1>Informacion acudiente</h1>
                                                 <label for="">Nombre acudiente</label>
-                                                <input type="text" class="form-control" name="nombrea">
+                                                <input type="text" class="form-control" name="Nombreacudiente">
                                                 <label for="">Apellido</label>
-                                                <input type="text" class="form-control" name="apellidoa">
+                                                <input type="text" class="form-control" name="Apellidoacudiente">
                                                 <label for="">Telefono</label>
-                                                <input type="number" class="form-control" name="telefonoa">
+                                                <input type="number" class="form-control" name="Telefonoacudiente">
                                                 <label for="">Correo electronico</label>
-                                                <input type="email" class="form-control" name="correoa">
+                                                <input type="email" class="form-control" name="Correoacudiente">
                                                 <label for="">Ocupacion</label>
-                                                <input type="text" class="form-control" name="ocupaciona">
+                                                <input type="text" class="form-control" name="Ocupacionacudiente">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <button class="btn btn-success">Agregar padres</button>
+                                <button class="btn btn-success" id="insertar">Agregar padres</button>
                             </form> 
                         <%}else{ %>
                             <h1 style="text-align: center;">Informacion de los padres</h1>
@@ -316,7 +316,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button class="btn btn-success">Agregar padres</button>
                             </form>
                             <% } %>
                 </div>
@@ -380,6 +379,8 @@
     <!-- Page level custom scripts -->
     <script src="../js/demo/chart-area-demo.js"></script>
     <script src="../js/demo/chart-pie-demo.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/padres.js"></script>
 
 </body>
 

@@ -224,5 +224,26 @@ controller.vermisnotas=(req,res)=>{
     });
   }
 }
+controller.insertarpadre=(req,res)=>{
+  if(req.session.identificacion){
+    const id ={Documentoestudiantepad: req.session.identificacion}
+    const data = Object.assign(id,req.body);
+    mysql.query('Insert into padresacudientes set?',[data],(err)=>{
+      if(err){
+        throw err;
+      }
+      else{
+        res.redirect('/students/padres')
+      }
+    })
+  }
+  else {
+    res.render("login", {
+      Error: "Usted no tiene las credenciales para acceder a este sitio",
+    });
+  }
+}
+
+
 
 module.exports = controller;
