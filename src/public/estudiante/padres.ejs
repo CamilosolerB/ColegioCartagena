@@ -187,83 +187,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <h1><%=padres%> </h1>
-                    <%if(padres.lenght!=0){%>
-                        <% padres.forEach(function(data){%> 
-                        <h1 style="text-align: center;">Informacion de los padres</h1>
-                        <form action="/student/actualizarpapa" method="post">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="card p-4">
-                                        <div class="card body">
-                                            <h1>Informacion padre</h1>
-                                            <label for="">Nombre</label>
-                                            <input type="text" class="form-control" name="nombrep"
-                                                value="<%=data.Nombrepadre%>">
-                                            <label for="">Apellido</label>
-                                            <input type="text" class="form-control" name="apellidop"
-                                                value="<%=data.Apellidopadre%>">
-                                            <label for="">Telefono</label>
-                                            <input type="number" class="form-control" name="telefonop"
-                                                value="<%=data.Telefonopadre%>">
-                                            <label for="">Correo electronico</label>
-                                            <input type="email" class="form-control" name="correop"
-                                                value="<%=data.Correopadre%>">
-                                            <label for="">Ocupacion</label>
-                                            <input type="text" class="form-control" name="ocupacionp"
-                                                value="<%=data.Ocupacionpadre%>">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="card p-4">
-                                        <div class="card body">
-                                            <h1>Informacion madre</h1>
-                                            <label for="">Nombre madre</label>
-                                            <input type="text" class="form-control" name="nombrem"
-                                                value="<%=data.Nombremadre%>">
-                                            <label for="">Apellido</label>
-                                            <input type="text" class="form-control" name="apellidom"
-                                                value="<%=data.Apellidomadre%>">
-                                            <label for="">Telefono</label>
-                                            <input type="number" class="form-control" name="telefonom"
-                                                value="<%=data.Telefonomadre%>">
-                                            <label for="">Correo electronico</label>
-                                            <input type="email" class="form-control" name="correom"
-                                                value="<%=data.Correomadre%>">
-                                            <label for="">Ocupacion</label>
-                                            <input type="text" class="form-control" name="ocupacionm"
-                                                value="<%=data.Ocupacionmadre%>">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="card p-4">
-                                        <div class="card body">
-                                            <h1>Informacion acudiente</h1>
-                                            <label for="">Nombre acudiente</label>
-                                            <input type="text" class="form-control" name="nombrea"
-                                                value="<%=data.Nombreacudiente%>">
-                                            <label for="">Apellido</label>
-                                            <input type="text" class="form-control" name="apellidoa"
-                                                value="<%=data.Apellidoacudiente%>">
-                                            <label for="">Telefono</label>
-                                            <input type="number" class="form-control" name="telefonoa"
-                                                value="<%=data.Telefonoacudiente%>">
-                                            <label for="">Correo electronico</label>
-                                            <input type="email" class="form-control" name="correoa"
-                                                value="<%=data.Correoacudiente%>">
-                                            <label for="">Ocupacion</label>
-                                            <input type="text" class="form-control" name="ocupaciona"
-                                                value="<%=data.Ocupacionacudiente%>">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="btn btn-success">Agregar padres</button>
-                        </form>
-                        <%})%> 
-                        <%}else{ %>
+                    <%if(padres.length === 0){%>
                             <h1>Informacion de los padres</h1>
                             <form action="/students/agregarpapa" method="post">
                                 <div class="row">
@@ -315,6 +239,79 @@
                                                 <input type="email" class="form-control" name="correoa">
                                                 <label for="">Ocupacion</label>
                                                 <input type="text" class="form-control" name="ocupaciona">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-success">Agregar padres</button>
+                            </form> 
+                        <%}else{ %>
+                            <h1 style="text-align: center;">Informacion de los padres</h1>
+                            <form action="/student/actualizarpapa" method="post">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card p-4">
+                                            <div class="card body">
+                                                <h1>Informacion padre</h1>
+                                                <label for="">Nombre</label>
+                                                <input type="text" class="form-control" name="nombrep"
+                                                    value="<%=padres[0].Nombrepadre%>">
+                                                <label for="">Apellido</label>
+                                                <input type="text" class="form-control" name="apellidop"
+                                                    value="<%=padres[0].Apellidopadre%>">
+                                                <label for="">Telefono</label>
+                                                <input type="number" class="form-control" name="telefonop"
+                                                    value="<%=padres[0].Telefonopadre%>">
+                                                <label for="">Correo electronico</label>
+                                                <input type="email" class="form-control" name="correop"
+                                                    value="<%=padres[0].Correopadre%>">
+                                                <label for="">Ocupacion</label>
+                                                <input type="text" class="form-control" name="ocupacionp"
+                                                    value="<%=padres[0].Ocupacionpadre%>">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card p-4">
+                                            <div class="card body">
+                                                <h1>Informacion madre</h1>
+                                                <labelfor="">Nombre madre</label>
+                                                <input type="text" class="form-control" name="nombrem"
+                                                    value="<%=padres[0].Nombremadre%>">
+                                                <label for="">Apellido</label>
+                                                <input type="text" class="form-control" name="apellidom"
+                                                    value="<%=padres[0].Apellidomadre%>">
+                                                <label for="">Telefono</label>
+                                                <input type="number" class="form-control" name="telefonom"
+                                                    value="<%=padres[0].Telefonomadre%>">
+                                                <label for="">Correo electronico</label>
+                                                <input type="email" class="form-control" name="correom"
+                                                    value="<%=padres[0].Correomadre%>">
+                                                <label for="">Ocupacion</label>
+                                                <input type="text" class="form-control" name="ocupacionm"
+                                                    value="<%=padres[0].Ocupacionmadre%>">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card p-4">
+                                            <div class="card body">
+                                                <h1>Informacion acudiente</h1>
+                                                <label for="">Nombre acudiente</label>
+                                                <input type="text" class="form-control" name="nombrea"
+                                                    value="<%=padres[0].Nombreacudiente%>">
+                                                <label for="">Apellido</label>
+                                                <input type="text" class="form-control" name="apellidoa"
+                                                    value="<%=padres[0].Apellidoacudiente%>">
+                                                <label for="">Telefono</labepadresl>
+                                                <input type="number" class="form-control" name="telefonoa"
+                                                    value="<%=padres[0].Telefonoacudiente%>">
+                                                <label for="">Correo electronico</label>
+                                                <input type="email" class="form-control" name="correoa"
+                                                    value="<%=padres[0].Correoacudiente%>">
+                                                <label for="">Ocupacion</label>
+                                                <input type="text" class="form-control" name="ocupaciona"
+                                                    value="<%=padres[0].Ocupacionacudiente%>">
                                             </div>
                                         </div>
                                     </div>
