@@ -109,6 +109,20 @@ controller.subirarchivos=async(req,res)=>{
   })
 }
 
+controller.actualizarnotas=async(req,res)=>{
+  if(req.session.active){
+    const {id} = req.params;
+    console.log(req.body)
+    await notas.findByIdAndUpdate(id,req.body)
+    res.json({message: 'actualizacion correcta'})
+  }
+  else {
+    res.render("login", {
+      Error: "Usted no tiene las credenciales para acceder a este sitio",
+    });
+  }
+}
+
 //a
 module.exports= controller;
 

@@ -188,7 +188,7 @@
                                         <hr class="sidebar-divider">
                                         <label for="">Obtener lista en blanco</label>
                                         <p>Por favor no unir celdas y mantener la Informacion, es libre de personalizar el documento</p>
-                                        <a href="/profesor/generarexcel" class="btn btn-primary">Obtener lista</a>
+                                        <a href="/profesor/generarexcel" class="btn btn-info">Obtener lista</a>
                                     </form>
                                 </div>
                             </div>
@@ -216,13 +216,14 @@
                                         <tr>
                                             <td><%=notas.Idenficacion%></td>
                                             <td><%=notas.NombreCompleto%></td>
-                                            <td><input type="number" name="" class="form-control" id="nota1" value="<%=notas.Nota1%>"></td>
-                                            <td><input type="number" name="" class="form-control" id="nota2" value="<%=notas.Nota2%>"></td>
-                                            <td><input type="number" name="" class="form-control" id="nota3" value="<%=notas.Nota3%>"></td>
-                                            <td><input type="number" name="" class="form-control" id="nota4" value="<%=notas.Nota4%>"></td>
-                                            <td><input type="number" name="" class="form-control" id="nota5" value="<%=notas.Nota5%>"></td>
-                                            <td><input type="number" name="" class="form-control" id="nota6" value="<%=notas.Nota6%>"></td>
-                                            <td><input type="number" name="" class="form-control" id="promedio" value="<%=notas.Promedio%>"></td>
+                                            <input type="hidden" name="_id" value="<%=notas._id%>">
+                                            <td><input type="number" name="nota1" class="form-control" id="nota1" value="<%=notas.Nota1%>"></td>
+                                            <td><input type="number" name="nota2" class="form-control" id="nota2" value="<%=notas.Nota2%>"></td>
+                                            <td><input type="number" name="nota3" class="form-control" id="nota3" value="<%=notas.Nota3%>"></td>
+                                            <td><input type="number" name="nota4" class="form-control" id="nota4" value="<%=notas.Nota4%>"></td>
+                                            <td><input type="number" name="nota5" class="form-control" id="nota5" value="<%=notas.Nota5%>"></td>
+                                            <td><input type="number" name="nota6" class="form-control" id="nota6" value="<%=notas.Nota6%>"></td>
+                                            <td><input type="number" name="promedio" class="form-control" id="promedio" value="<%=notas.Promedio%>"></td>
                                             <td><button value="<%=notas.Idenficacion%>" class="btn btn-primary" id="boton"><i class="fa-solid fa-pen-clip"></i></button></td>
                                           </tr>
                                         <%})%>  
