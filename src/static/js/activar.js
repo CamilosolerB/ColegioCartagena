@@ -9,13 +9,13 @@ function inactivar() {
       confirmButtonText: 'Si, inactivar'
     }).then((result) => {
       if (result.isConfirmed) {
-          let id = document.getElementById('inactivar').value;
+          let valor = document.getElementById('inactivar').value;
           fetch('/profesor/inactivar',{
               method:'PUT',
               headers:{
                 'Content-Type': 'application/json'
               },
-              body: JSON.stringify({id})
+              body: JSON.stringify({valor})
           })
           .then(data =>{
             Swal.fire(
@@ -43,13 +43,14 @@ function inactivar() {
       confirmButtonText: 'Si, activar'
     }).then((result) => {
       if (result.isConfirmed) {
-          let id = document.getElementById('activar').value;
+          let valor = document.getElementById('activar').value;
+          console.log(valor)
           fetch('/profesor/activar',{
               method:'PUT',
               headers:{
                 'Content-Type': 'application/json'
               },
-              body: JSON.stringify({id})
+              body: JSON.stringify({valor})
           })
           .then(data =>{
             Swal.fire(

@@ -60,10 +60,10 @@ controller.getprofesor = (req, res) => {
 };
 controller.inactivarprofesor = (req, res) => {
   if (req.session.active) {
-    const { id } = req.body;
+    const { valor } = req.body;
     mysql.query(
       "Update usuario Set activo=0 Where idusuarios=?",
-      [id],
+      [valor],
       (err) => {
         if (err) {
           throw err;
@@ -82,10 +82,10 @@ controller.inactivarprofesor = (req, res) => {
 
 controller.activarprofesor = (req, res) => {
   if (req.session.active) {
-    const { id } = req.body;
+    const { valor } = req.body;
     mysql.query(
       "Update usuario Set activo=1 Where idusuarios=?",
-      [id],
+      [valor],
       (err) => {
         if (err) {
           throw err;

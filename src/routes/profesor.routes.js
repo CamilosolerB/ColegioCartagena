@@ -127,7 +127,7 @@ router.post('/cambiardatos', uploads.single('foto'), (req,res)=>{
 });
 router.get('/generarexcel',files.crearlista);
 router.post('/subirnotas',files.subirarchivos);
-router.put('/:id',files.actualizarnotas);
+router.put('/actualizar/:id',files.actualizarnotas);
 router.get('/admin/:id',controller.getprofesor);
 router.get('/misdatos',controller.getprofesor);
 router.get('/verprofesor',controller.mostrarprofesores);

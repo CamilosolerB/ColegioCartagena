@@ -20,7 +20,7 @@ $(document).ready(function(){
         let Promedio=$("[name='promedio']").eq(boton).val();
         $.ajax({
           type: "PUT",
-          url: "/profesor/"+_id,
+          url: "/profesor/actualizar/"+_id,
           data: {
             Nota1:Nota1,Nota2:Nota2,Nota3:Nota3,Nota4:Nota4,Nota5:Nota5,Nota6:Nota6,Promedio:Promedio
           },
