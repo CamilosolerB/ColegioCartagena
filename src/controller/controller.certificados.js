@@ -51,7 +51,7 @@ controller.generarpdf=(req,res)=>{
       </style>
     </head>
     <body class="u-body u-xl-mode"><header class="u-clearfix u-header u-header" id="sec-8d19"><div class="u-align-left u-clearfix u-sheet u-sheet-1">
-          <img class="image" src="images/logo.png">
+          <img class="image" src="https://scontent.feoh2-1.fna.fbcdn.net/v/t1.18169-9/14925315_358879734457685_1323928683954949289_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHBt7-2o9xf79oFh-FhrAys7PPKEl3SYn_s88oSXdJify9cRV9j4x2Baj4F2rMSq0VFv4fM1pjoMwAzOIIajY6N&_nc_ohc=jYuXsxSLQVsAX8kiWbw&_nc_ht=scontent.feoh2-1.fna&oh=00_AT944wUmNITujBsRjbVxB9OSaJpvVvlFZsXNiQg80EJG-A&oe=62D4C903">
           <h1 class="title">
             <span style="font-size: 1.5rem;">La Institución Educativa Privada De Cartagenita</span>
           </h1>
