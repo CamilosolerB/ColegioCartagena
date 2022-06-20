@@ -30,12 +30,11 @@ controller.enviarmail=(req,res)=>{
             }
         ]
     }
-
     transport.sendMail(message,(err)=>{
         if (err) {
             throw err
         } else {
-            res.redirect('/students/certificados');
+            res.json({message: "archivo enviado con exito"});
         }
     })
 }
