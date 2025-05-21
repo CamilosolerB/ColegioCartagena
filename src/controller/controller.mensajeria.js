@@ -2,18 +2,13 @@ const controller = {}
 const nodemailer = require('nodemailer');
 const mysql = require('../database')
 
-var user = "camilosolerbu@hotmail.com"
+var user = "caansobu2@gmail.com"
 
 let transport = nodemailer.createTransport({
-    host: "smtp-mail.outlook.com", // hostname
-    port: 587, // port for secure SMTP
-    secureConnection: false,
-    tls: {
-       ciphers:'SSLv3'
-    },
-    auth:{
-        user: user,
-        pass: 'Camiloesbueno'
+    service: 'gmail',
+    auth: {
+        user: user, // Cambia por tu correo de Gmail
+        pass: 'vklt pysb huqr uyui' // Cambia por tu contraseña de aplicación de Gmail
     }
 });
 controller.enviarmail=(req,res)=>{
