@@ -4,29 +4,21 @@ const mysql = require("../database");
 controller.crearcurso = (req, res) => {
   if (req.session.active) {
     const { codigo, numeroest, grado } = req.body;
-    const data = {
-      Codigocurso: codigo,
-      nodeestudiantes: numeroest,
-    };
-    mysql.query("Insert into curso set?", [data], (err) => {
-      if (err) {
-        throw err;
-      } else {
-        const data2 = {
-          idgrado: grado,
-          idcurso: codigo,
-        };
-        mysql.query("Insert into gradoscursos set?", [data2], (err) => {
-          if (err) {
-            throw err;
-          } else {
-            res.redirect("/admin/cursos");
-          }
-        });
+
+    mysql.query(
+      "CALL sp_insertar_curso(?, ?, ?)",
+      [codigo, numeroest, grado],
+      (err) => {
+        if (err) {
+          throw err;
+        } else {
+          res.redirect("/admin/cursos");
+        }
       }
-    });
+    );
   }
 };
+
 controller.asignarprofesores = (req, res) => {
   const { id } = req.params;
   mysql.query(
