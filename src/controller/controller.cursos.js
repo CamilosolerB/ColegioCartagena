@@ -30,14 +30,14 @@ controller.crearcurso = (req, res) => {
 controller.asignarprofesores = (req, res) => {
   const { id } = req.params;
   mysql.query(
-    "Select * from estudiante inner join estudiantecurso on (Documentoestudiante=idestudiante) Where idcurso=?",
+    "SELECT * FROM `vista_est_estcur`  Where idcurso=?",
     [id],
     (err, resbd) => {
       if (err) {
         throw err;
       } else {
         mysql.query(
-          "select * from docente inner join `materias-profesor` on (Codigoprofesor=idprofmat) inner join materias on (idmatprof=Idmateria) Where idcursmat=?",
+          "SELECT * FROM `vista_doc_docmat`  Where idcursmat=?",
           [id],
           (err, doc) => {
             if (err) {

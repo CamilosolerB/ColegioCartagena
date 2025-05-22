@@ -8,7 +8,7 @@ controller.getprofesor = (req, res) => {
     if (Object.keys(req.params).length === 0) {
       const id = req.session.identificacion;
       mysql.query(
-        "Select * from docente inner join usuario on (Codigoprofesor=idusuarios) Where Codigoprofesor=?",
+        "SELECT * FROM `vista_doc_docmat` Where Codigoprofesor=?",
         [id],
         (err, resbd) => {
           if (err) {
