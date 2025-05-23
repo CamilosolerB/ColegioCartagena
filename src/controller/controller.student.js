@@ -79,39 +79,44 @@ controller.actualizardatos=(req,res)=>{
       }
       else{
         const {nombre,apellido,edad,telefono,direccion,sangre,fecnac,correo,clave} = req.body;
-        if(req.file===undefined){
-          var query2 = 'Update estudiante SET Nombre="'+nombre+'",Apellido="'+apellido+'",Edad="'+edad+'",Telefono="'+telefono+'",Direccion="'+direccion+'",TipoDeSangre="'+sangre+'",Fechanacimiento="'+fecnac+'" Where Documentoestudiante="'+req.session.identificacion+'"'
-          mysql.query(query2,(err)=>{
-            var query = 'Update usuario SET Correo="'+correo+'", Clave="'+clave+'" Where idusuarios="'+req.session.identificacion+'"';
-            mysql.query(query,(err)=>{
-              if(err){
-                throw err;
-              }
-              else{
-                req.session.nombre = nombre;
-                req.session.apellido = apellido;
-                res.redirect('/students/mis_datos')
-              }
-            })
-          })
-        }
-        else{
-          const image = '../students/' + req.file.filename
-          var query2 = 'Update estudiante SET Nombre="'+nombre+'",Apellido="'+apellido+'",Edad="'+edad+'",Telefono="'+telefono+'",Direccion="'+direccion+'",TipoDeSangre="'+sangre+'",Fechanacimiento="'+fecnac+'" Where Documentoestudiante="'+req.session.identificacion+'"'
-          mysql.query(query2,(err)=>{
-            var query = 'Update usuario SET Correo="'+correo+'", Clave="'+clave+'", foto="'+image+'" Where idusuarios="'+req.session.identificacion+'"';            
-            mysql.query(query,(err)=>{
-              if(err){
-                throw err;
-              }
-              else{
-                req.session.nombre = nombre;
-                req.session.apellido = apellido;
-                req.session.image = image;
-                res.redirect('/students/mis_datos')
-              }
-            })
-          })
+        if(req.file === undefined){
+          mysql.query(
+            "CALL actualizar_estudiante(?, ?, ?, ?, ?, ?, ?, ?)",
+            [nombre, apellido, edad, telefono, direccion, sangre, fecnac, req.session.identificacion],
+            (err) => {
+              if (err) throw err;
+              mysql.query(
+                "CALL actualizar_usuario(?, ?, NULL, ?)",
+                [correo, clave, req.session.identificacion],
+                (err) => {
+                  if (err) throw err;
+                  req.session.nombre = nombre;
+                  req.session.apellido = apellido;
+                  res.redirect('/students/mis_datos');
+                }
+              );
+            }
+          );
+        } else {
+          const image = '../students/' + req.file.filename;
+          mysql.query(
+            "CALL actualizar_estudiante(?, ?, ?, ?, ?, ?, ?, ?)",
+            [nombre, apellido, edad, telefono, direccion, sangre, fecnac, req.session.identificacion],
+            (err) => {
+              if (err) throw err;
+              mysql.query(
+                "CALL actualizar_usuario(?, ?, ?, ?)",
+                [correo, clave, image, req.session.identificacion],
+                (err) => {
+                  if (err) throw err;
+                  req.session.nombre = nombre;
+                  req.session.apellido = apellido;
+                  req.session.image = image;
+                  res.redirect('/students/mis_datos');
+                }
+              );
+            }
+          );
         } 
       }
     })

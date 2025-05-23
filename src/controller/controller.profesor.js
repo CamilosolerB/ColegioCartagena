@@ -129,36 +129,20 @@ controller.mostrarprofesores = (req, res) => {
 };
 
 controller.asignarcurso = (req, res) => {
-  if(req.session.active){
+  if (req.session.active) {
     const { nombre, materia, curso } = req.body;
-    const cursodocente = {
-      idcursdoc: curso,
-      iddocente: nombre,
-    };
-    mysql.query("Insert into cursodocente set?", [cursodocente], (err) => {
-      if (err) {
-        throw err;
-      } else {
-        const materias = {
-          idprofmat: nombre,
-          idmatprof: materia,
-          idcursmat: curso,
-        };
-        mysql.query(
-          "Insert into `materias-profesor` set?",
-          [materias],
-          (error) => {
-            if (error) {
-              throw error;
-            } else {
-              res.json({ message: "insertado correctamente" });
-            }
-          }
-        );
+    mysql.query(
+      "CALL asignar_curso_profesor(?, ?, ?)",
+      [nombre, materia, curso],
+      (err) => {
+        if (err) {
+          throw err;
+        } else {
+          res.json({ message: "insertado correctamente" });
+        }
       }
-    });
-  }
-  else {
+    );
+  } else {
     res.render("login", {
       Error: "Usted no tiene las credenciales para acceder a este sitio",
     });
