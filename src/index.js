@@ -47,3 +47,6 @@ app.set('port', process.env.PORT || 3000);
 
 //configuracion del puerto
 app.listen(app.get('port'), ()=> console.log(`Server on port ${app.get('port')}`))
+
+
+module.exports = app;
